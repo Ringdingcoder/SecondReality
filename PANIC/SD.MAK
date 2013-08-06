@@ -23,7 +23,7 @@ EXE_dependencies =  \
  shutdown.obj \
  tweak.obj \
  asmyt.obj \
- i:\u2\dis\disc.obj
+ disc.obj
 
 #		*Explicit Rules*
 sd.exe: sd.cfg $(EXE_dependencies)
@@ -32,7 +32,7 @@ c0l.obj+
 shutdown.obj+
 tweak.obj+
 asmyt.obj+
-i:\u2\dis\disc.obj
+disc.obj
 sd
 		# no map file
 emu.lib+
