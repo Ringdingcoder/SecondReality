@@ -48,6 +48,12 @@ stamps\credits.st:
 	cd ..
 	copy nul $@
 
+stamps\ddstars.st:
+	cd ddstars
+	nmake
+	cd ..
+	copy nul $@
+
 stamps\dots.st:
 	cd dots
 	nmake
