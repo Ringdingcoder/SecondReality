@@ -1,2 +1,0 @@
-main.obj asm.obj lineblit.obj +
-_eye.obk ..\dis\disc.obj,p.exe,nul;
