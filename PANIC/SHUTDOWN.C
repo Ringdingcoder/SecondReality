@@ -3,7 +3,7 @@
 #include <fcntl.h>
 #include <dos.h>
 #include <math.h>
-#include "i:\u2\dis\dis.h"
+#include "..\dis\dis.h"
 
 extern void tw_opengraph();
 extern void tw_closegraph();
