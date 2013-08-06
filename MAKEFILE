@@ -1,5 +1,6 @@
 stamps=stamps\disc.st \
 	stamps\fcp.st \
+	stamps\glenz.st \
 	stamps\endscrl.st \
 	stamps\endpic.st \
 	stamps\end.st \
@@ -82,5 +83,11 @@ stamps\endscrl.st:
 stamps\fcp.st:
 	cd fcp
 	make -ffcp
+	cd ..
+	copy nul $@
+
+stamps\glenz.st:
+	cd glenz
+	nmake
 	cd ..
 	copy nul $@
