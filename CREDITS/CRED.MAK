@@ -24,7 +24,7 @@ EXE_dependencies =  \
  tweak.obj \
  include.obj \
  includ2.obj \
- ..\dis\disc.obj
+ disc.obj
 
 #		*Explicit Rules*
 cred.exe: cred.cfg $(EXE_dependencies)
@@ -34,7 +34,7 @@ main.obj+
 tweak.obj+
 include.obj+
 includ2.obj+
-..\dis\disc.obj
+disc.obj
 cred
 		# no map file
 graphics.lib+

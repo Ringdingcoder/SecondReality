@@ -1,4 +1,5 @@
 stamps=stamps\disc.st \
+	stamps\credits.st \
 	stamps\alku.st \
 	stamps\beg.st \
 	stamps\coman.st
@@ -10,6 +11,7 @@ stamps\disc.st:
 	nmake disc.obj
 	cd ..
 	copy dis\disc.obj alku
+	copy dis\disc.obj credits
 	copy nul $@
 
 stamps\alku.st:
@@ -27,5 +29,15 @@ stamps\beg.st:
 stamps\coman.st:
 	cd coman
 	nmake
+	cd ..
+	copy nul $@
+
+stamps\credits.st:
+	cd credits
+	cd pics
+	-cmd /c sfd
+	cd ..
+	-cmd /c unpack
+	make -fcred
 	cd ..
 	copy nul $@

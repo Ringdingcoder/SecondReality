@@ -1,6 +1,6 @@
 #include <conio.h>
 #include <mem.h>
-#include "h:\u2\dis\dis.h"
+#include "..\dis\dis.h"
 
 char *prtc(int x,int y,char *txt);
 
