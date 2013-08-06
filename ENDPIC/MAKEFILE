@@ -18,7 +18,7 @@ c_f	= /AL /c /W3
 	cl /qc $(c_f) $<
 
 beg.exe : $(objs)
-	link /E $(objs)+_pic.obk+..\dis\disc.obj,beg.exe,nul;
+	link $(objs)+_pic.obk+..\dis\disc.obj,beg.exe,nul;
 	copy beg.exe ..\main\data\beglogo.exe
 	
 

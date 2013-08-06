@@ -55,7 +55,7 @@ extern int gravity;
 extern int gravitybottom;
 extern int gravityd;
 
-void setborder(int color)
+void setborder(char color)
 {
 	_asm
 	{
