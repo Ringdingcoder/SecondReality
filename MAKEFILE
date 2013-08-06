@@ -1,6 +1,7 @@
 stamps=stamps\disc.st \
 	stamps\alku.st \
-	stamps\beg.st
+	stamps\beg.st \
+	stamps\coman.st
 
 all : $(stamps) 
 
@@ -19,6 +20,12 @@ stamps\alku.st:
 
 stamps\beg.st:
 	cd beg
+	nmake
+	cd ..
+	copy nul $@
+
+stamps\coman.st:
+	cd coman
 	nmake
 	cd ..
 	copy nul $@
