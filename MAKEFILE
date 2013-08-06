@@ -1,8 +1,9 @@
 stamps=stamps\disc.st \
+	stamps\ddstars.st \
 	stamps\credits.st \
-	stamps\alku.st \
+	stamps\coman.st \
 	stamps\beg.st \
-	stamps\coman.st
+	stamps\alku.st
 
 all : $(stamps) 
 
@@ -41,3 +42,10 @@ stamps\credits.st:
 	make -fcred
 	cd ..
 	copy nul $@
+
+stamps\ddstars.st:
+	cd ddstars
+	nmake
+	cd ..
+	copy nul $@
+
