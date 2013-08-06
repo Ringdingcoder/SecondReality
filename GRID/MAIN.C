@@ -130,7 +130,7 @@ main(int argc,char *argv[])
 	cp=muldata;
 	for(x=0;x<256;x++) for(y=0;y<256;y++)
 	{
-		_asm mov al,x
+		_asm mov ax,x
 		_asm mul byte ptr y
 		_asm mov al,ah
 		_asm xor ah,ah
