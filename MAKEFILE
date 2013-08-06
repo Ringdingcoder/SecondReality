@@ -1,4 +1,8 @@
 stamps=stamps\disc.st \
+	stamps\endscrl.st \
+	stamps\endpic.st \
+	stamps\end.st \
+	stamps\dots.st \
 	stamps\ddstars.st \
 	stamps\credits.st \
 	stamps\coman.st \
@@ -13,6 +17,7 @@ stamps\disc.st:
 	cd ..
 	copy dis\disc.obj alku
 	copy dis\disc.obj credits
+	copy dis\disc.obj endscrl
 	copy nul $@
 
 stamps\alku.st:
@@ -43,9 +48,26 @@ stamps\credits.st:
 	cd ..
 	copy nul $@
 
-stamps\ddstars.st:
-	cd ddstars
+stamps\dots.st:
+	cd dots
 	nmake
 	cd ..
 	copy nul $@
 
+stamps\end.st:
+	cd end
+	nmake
+	cd ..
+	copy nul $@
+
+stamps\endpic.st:
+	cd endpic
+	nmake
+	cd ..
+	copy nul $@
+
+stamps\endscrl.st:
+	cd endscrl
+	make -fendscrl
+	cd ..
+	copy nul $@

@@ -22,7 +22,7 @@ INCLUDEPATH = E:\u2\CPP\INCLUDE
 EXE_dependencies =  \
  main.obj \
  asmyt.obj \
- i:\u2\dis\disc.obj
+ disc.obj
 
 #		*Explicit Rules*
 endscrl.exe: endscrl.cfg $(EXE_dependencies)
@@ -30,7 +30,7 @@ endscrl.exe: endscrl.cfg $(EXE_dependencies)
 c0l.obj+
 main.obj+
 asmyt.obj+
-i:\u2\dis\disc.obj
+disc.obj
 endscrl
 		# no map file
 graphics.lib+
