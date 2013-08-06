@@ -82,7 +82,7 @@ stamps\endscrl.st:
 
 stamps\fcp.st:
 	cd fcp
-	make -ffcp
+	make -ffcp fcprot.exe
 	cd ..
 	copy nul $@
 
