@@ -25,7 +25,7 @@ EXE_dependencies =  \
  tweak.obj \
  include.obj \
  copper.obj \
- ..\dis\disc.obj
+ disc.obj
 
 #		*Explicit Rules*
 alku.exe: alku.cfg $(EXE_dependencies)
@@ -36,7 +36,7 @@ asmyt.obj+
 tweak.obj+
 include.obj+
 copper.obj+
-..\dis\disc.obj
+disc.obj
 alku
 		# no map file
 graphics.lib+

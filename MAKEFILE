@@ -1,0 +1,24 @@
+stamps=stamps\disc.st \
+	stamps\alku.st \
+	stamps\beg.st
+
+all : $(stamps) 
+
+stamps\disc.st:
+	cd dis
+	nmake disc.obj
+	cd ..
+	copy dis\disc.obj alku
+	copy nul $@
+
+stamps\alku.st:
+	cd alku
+	make -falku
+	cd ..
+	copy nul $@
+
+stamps\beg.st:
+	cd beg
+	nmake
+	cd ..
+	copy nul $@
