@@ -1,7 +1,7 @@
 #include <dos.h>
 #include <io.h>
 #include <fcntl.h>
-#include "i:\u2\dis\dis.h"
+#include "..\dis\dis.h"
 
 #define FONAY 30
 
