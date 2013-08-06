@@ -1,4 +1,5 @@
 stamps=stamps\disc.st \
+	stamps\jplogo.st \
 	stamps\grid.st \
 	stamps\glenz.st \
 	stamps\fcp.st \
@@ -95,6 +96,12 @@ stamps\glenz.st:
 
 stamps\grid.st:
 	cd grid
+	nmake
+	cd ..
+	copy nul $@
+
+stamps\jplogo.st:
+	cd jplogo
 	nmake
 	cd ..
 	copy nul $@
