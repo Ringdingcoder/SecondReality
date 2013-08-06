@@ -23,7 +23,7 @@ lens.exe : $(objs)
 	echo $(data2) >> link.tmp
 	echo ,lens.exe,lens.map; >> link.tmp
 	link @link.tmp
-	copy lens.exe ..\main\data\lns&zoom.exe
+	copy lens.exe ..\main\data\lnszoom.exe
 
 calc.exe : calc.c
 	cl /W3 /AL /qc calc.c /link /E

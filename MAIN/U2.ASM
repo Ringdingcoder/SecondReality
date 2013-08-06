@@ -81,7 +81,7 @@ exe9                                            db 'MNTSCRL.EXE',0
 ;txt11  db      'Lens (PSI)                  ',0
 ;see below
 ;txt12  db      'Rotazoomer (PSI)            ',0
-exe1112                                         db 'LNS&ZOOM.EXE',0
+exe1112                                         db 'LNSZOOM.EXE',0
 ;txt13  db      'Plasma (WILDF)              ',0
 ;txt14  db      'Plasmacube (WILDF)          ',0
 exe1314                                         db 'PLZPART.EXE',0
