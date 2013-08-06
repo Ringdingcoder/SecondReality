@@ -1,8 +1,4 @@
-all : dots.exe face.exe
-
-face.exe : face.c
-	cl /qc /AL face.c
-	face > face.inc
+all : dots.exe
 
 objs=main.obj asm.obj ..\dis\disc.obj
 
