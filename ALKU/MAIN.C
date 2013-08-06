@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include "tweak.h"
-#include "h:\u2\dis\dis.h"
+#include "..\dis\dis.h"
 
 #define SCRLF 9
 
