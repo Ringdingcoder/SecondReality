@@ -25,7 +25,7 @@ EXE_dependencies =  \
  include.obj \
  tweak.obj \
  copper.obj \
- ..\dis\disc.obj
+ disc.obj
 
 #		*Explicit Rules*
 pam.exe: pam.cfg $(EXE_dependencies)
@@ -36,7 +36,7 @@ asmyt.obj+
 include.obj+
 tweak.obj+
 copper.obj+
-..\dis\disc.obj
+disc.obj
 pam,pam
 cl.lib
 |
