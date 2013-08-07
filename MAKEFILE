@@ -10,6 +10,7 @@ stamps=stamps\disc.st \
 	stamps\plzpart.st \
 	stamps\panic.st \
 	stamps\pam.st \
+	stamps\main.st \
 	stamps\lens.st \
 	stamps\jplogo.st \
 	stamps\grid.st \
@@ -23,7 +24,8 @@ stamps=stamps\disc.st \
 	stamps\credits.st \
 	stamps\coman.st \
 	stamps\beg.st \
-	stamps\alku.st
+	stamps\alku.st \
+	stamps\final.st
 
 all : $(stamps) 
 
@@ -103,6 +105,13 @@ stamps\fcp.st:
 	cd ..
 	copy nul $@
 
+stamps\final.st:
+	cd main
+	nmake pack.exe
+	pack
+	cd ..
+	copy nul $@
+
 stamps\forest.st:
 	cd forest
 	tasm routines
@@ -130,6 +139,12 @@ stamps\jplogo.st:
 
 stamps\lens.st:
 	cd lens
+	nmake
+	cd ..
+	copy nul $@
+
+stamps\main.st:
+	cd main
 	nmake
 	cd ..
 	copy nul $@
