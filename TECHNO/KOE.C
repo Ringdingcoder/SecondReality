@@ -36,7 +36,7 @@ int 	waitborder(void)
 	static int lasta=0;
 	int	a,r;
 	char	*p;
-	a=dis_musrow();
+	a=dis_musrow(0);
 	if(a!=lasta)
 	{
 		lasta=a;
@@ -276,7 +276,7 @@ main(int argc,char *argv[])
 
 	while(!dis_exit())
 	{
-		a=dis_musrow()&7;
+		a=dis_musrow(0)&7;
 		if(a==7) break;
 	}
 
@@ -302,7 +302,7 @@ main(int argc,char *argv[])
 		
 		while(!dis_exit())
 		{
-			a=dis_musrow()&7;
+			a=dis_musrow(0)&7;
 			if(a==7) break;
 		}
 		{
@@ -378,7 +378,7 @@ int	doit1(int count)
 			vma--;
 		}
 		_asm mov dx,3c4h
-		_asm mov ah,pl
+		_asm mov ah,byte ptr pl
 		_asm mov al,2
 		_asm out dx,ax
 		asmdoit(vbuf,vram);
@@ -438,7 +438,7 @@ int	doit2(int count)
 			rota++;
 		}
 		_asm mov dx,3c4h
-		_asm mov ah,pl
+		_asm mov ah,byte ptr pl
 		_asm mov al,2
 		_asm out dx,ax
 		asmdoit(vbuf,vram);
@@ -566,7 +566,7 @@ int	doit3(int count)
 			rota++;
 		}
 		_asm mov dx,3c4h
-		_asm mov ah,pl
+		_asm mov ah, byte ptr pl
 		_asm mov al,2
 		_asm out dx,ax
 		asmdoit2(vbuf,vram);
