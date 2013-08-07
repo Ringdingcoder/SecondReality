@@ -1,4 +1,6 @@
 stamps=stamps\disc.st \
+	stamps\visu.st \
+	stamps\visu_c.st \
 	stamps\twist.st \
 	stamps\techno.st \
 	stamps\start.st \
@@ -156,5 +158,17 @@ stamps\techno.st:
 stamps\twist.st:
 	cd twist
 	nmake
+	cd ..
+	copy nul $@
+
+stamps\visu.st:
+	cd visu
+	nmake
+	cd ..
+	copy nul $@
+
+stamps\visu_c.st:
+	cd visu\c
+	nmake c.exe
 	cd ..
 	copy nul $@
