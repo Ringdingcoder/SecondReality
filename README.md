@@ -9,3 +9,5 @@ Apparently, the required build tools are:
 * Borland C++ 3.1
 * Microsoft Visual C++ 1.52
 * Turbo Pascal (7) -- not yet tested
+
+I have the suspicion that I have messed up the line endings -- DOS line endings FTW!
