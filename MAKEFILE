@@ -1,4 +1,5 @@
 stamps=stamps\disc.st \
+	stamps\water.st \
 	stamps\visu.st \
 	stamps\visu_c.st \
 	stamps\twist.st \
@@ -171,4 +172,11 @@ stamps\visu_c.st:
 	cd visu\c
 	nmake u2a.exe u2e.exe
 	cd ..\..
+	copy nul $@
+
+stamps\water.st:
+	cd water
+	tasm routines
+	bpc /m demo
+	cd ..
 	copy nul $@
