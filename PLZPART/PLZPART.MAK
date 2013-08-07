@@ -29,7 +29,7 @@ EXE_dependencies =  \
  plzfill.obj \
  vect.obj \
  main.obj \
- ..\dis\disc.obj \
+ disc.obj \
  spline.obj
 
 #		*Explicit Rules*
@@ -45,7 +45,7 @@ plz.obj+
 plzfill.obj+
 vect.obj+
 main.obj+
-..\dis\disc.obj+
+disc.obj+
 spline.obj
 plzpart,plzpart
 emu.lib+

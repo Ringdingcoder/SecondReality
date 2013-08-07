@@ -27,6 +27,7 @@ stamps\disc.st:
 	copy dis\disc.obj endscrl
 	copy dis\disc.obj pam
 	copy dis\disc.obj panic
+	copy dis\disc.obj plzpart
 	copy nul $@
 
 stamps\alku.st:
