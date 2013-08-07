@@ -169,6 +169,6 @@ stamps\visu.st:
 
 stamps\visu_c.st:
 	cd visu\c
-	nmake c.exe
-	cd ..
+	nmake u2a.exe u2e.exe
+	cd ..\..
 	copy nul $@
