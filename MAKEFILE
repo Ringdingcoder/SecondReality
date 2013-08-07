@@ -1,4 +1,5 @@
 stamps=stamps\disc.st \
+	stamps\plzpart.st \
 	stamps\panic.st \
 	stamps\pam.st \
 	stamps\lens.st \
@@ -128,5 +129,11 @@ stamps\pam.st:
 stamps\panic.st:
 	cd panic
 	make -fsd
+	cd ..
+	copy nul $@
+
+stamps\plzpart.st:
+	cd plzpart
+	make -fplzpart
 	cd ..
 	copy nul $@
