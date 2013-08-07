@@ -1,36 +1,13 @@
 SecondReality
 =============
 
-Source code and data of Second Reality by Future Crew in 1993
+This fork
+#########
 
-This release is made to celebrate the 20th anniversary of the demo.
+I'm currently in the process of trying to rebuild the original, cleaning up the tree, removing and re-generating as much of the generated files as possible.
 
-Wikipedia links :
+Apparently, the required build tools are:
 
-[Future Crew](http://www.wikipedia.org/wiki/Future_Crew)
-[Second Reality](http://www.wikipedia.org/wiki/Second_reality)
-
-This is free and unencumbered software released into the public domain.
-
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
-
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-For more information, please refer to <http://unlicense.org/>
+Borland C++ 3.1
+Microsoft Visual C++ 1.52
+Turbo Pascal (7) -- not yet tested
