@@ -1,4 +1,5 @@
 stamps=stamps\disc.st \
+	stamps\tunneli.st \
 	stamps\water.st \
 	stamps\visu.st \
 	stamps\visu_c.st \
@@ -153,6 +154,13 @@ stamps\start.st:
 stamps\techno.st:
 	cd techno
 	nmake
+	cd ..
+	copy nul $@
+
+stamps\tunneli.st:
+	cd tunneli
+	tasm routines
+	bpc /m tun10
 	cd ..
 	copy nul $@
 
