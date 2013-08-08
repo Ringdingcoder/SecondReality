@@ -39,6 +39,7 @@ emu.lib+
 mathl.lib+
 cl.lib
 |
+  copy $@ ..\main\data\panicend.exe
 
 
 #		*Individual File Dependencies*

@@ -116,6 +116,7 @@ stamps\forest.st:
 	cd forest
 	tasm routines
 	bpc /m read2
+	copy read2.exe ..\main\data\mntscrl.exe
 	cd ..
 	copy nul $@
 
@@ -184,6 +185,7 @@ stamps\tunneli.st:
 	cd tunneli
 	tasm routines
 	bpc /m tun10
+	copy tun10.exe ..\main\data\tunneli.exe
 	cd ..
 	copy nul $@
 
@@ -209,5 +211,6 @@ stamps\water.st:
 	cd water
 	tasm routines
 	bpc /m demo
+	copy demo.exe ..\main\data\rayscrl.exe
 	cd ..
 	copy nul $@

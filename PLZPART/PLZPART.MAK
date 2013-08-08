@@ -52,6 +52,7 @@ emu.lib+
 mathl.lib+
 cl.lib
 |
+  copy $@ ..\main\data
 
 
 #		*Individual File Dependencies*

@@ -40,6 +40,7 @@ disc.obj
 pam,pam
 cl.lib
 |
+  copy $@ ..\data\main
 
 
 #		*Individual File Dependencies*
