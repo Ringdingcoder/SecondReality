@@ -44,6 +44,9 @@ final : $(objs1)
 	copy prot\prot.exe u2.exe
 	..\fcp\fcprot u2.exe -1
 
+packing.inc: packfina.inc
+	copy packfina.inc $@
+
 data\start.exe : $(objs2)
 	link /E /CP:1 $(objs2)+..\dis\disc.obj,data\start.exe;
 
