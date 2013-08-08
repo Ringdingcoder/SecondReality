@@ -38,7 +38,7 @@ fp87.lib+
 mathl.lib+
 cl.lib
 |
-  copy $@ ..\data\main
+  copy $@ ..\main\data
 
 
 #		*Individual File Dependencies*
