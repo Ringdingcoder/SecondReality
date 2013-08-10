@@ -1,3 +1,0 @@
-vf.exe : vf.c
-	qcl /AL vf.c
-	
