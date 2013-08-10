@@ -13,7 +13,6 @@ stamps=stamps\disc.st \
 	stamps\main.st \
 	stamps\lens.st \
 	stamps\jplogo.st \
-	stamps\grid.st \
 	stamps\glenz.st \
 	stamps\fcp.st \
 	stamps\endscrl.st \
@@ -122,12 +121,6 @@ stamps\forest.st:
 
 stamps\glenz.st:
 	cd glenz
-	nmake
-	cd ..
-	copy nul $@
-
-stamps\grid.st:
-	cd grid
 	nmake
 	cd ..
 	copy nul $@
