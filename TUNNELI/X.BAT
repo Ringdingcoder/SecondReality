@@ -1,1 +1,0 @@
-copy tun10.exe ..\main\data\tunneli.exe

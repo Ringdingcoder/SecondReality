@@ -1,1 +1,0 @@
-al -i -o -Xc160 -Yc100 -c240 -d %1.lbb %1.lbm

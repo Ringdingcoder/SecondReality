@@ -1,1 +1,0 @@
-copy alku.exe ..\main\data
