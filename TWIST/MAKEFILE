@@ -16,3 +16,9 @@ t.exe : $(objs)
 	link /E $(objs),t.exe,nul;
 
 twist.asm : twstloop.inc
+
+twstloop.inc: dol.exe
+	-.\dol
+
+dol.exe: dol.c
+	cl /AL dol.c
