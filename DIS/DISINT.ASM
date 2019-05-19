@@ -114,8 +114,6 @@ checkkeys PROC NEAR
         cmp     cs:forcebreak,0
         jne     @@3
         ENDIF
-        call    ctrldown
-        jc      @@6
         mov     ah,1                                    ;TEMP!
         int     16h
         jz      @@3

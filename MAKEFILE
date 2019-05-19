@@ -30,7 +30,7 @@ all : $(stamps)
 
 stamps\disc.st:
 	cd dis
-	nmake disc.obj
+	nmake
 	cd ..
 	copy dis\disc.obj alku
 	copy dis\disc.obj credits
