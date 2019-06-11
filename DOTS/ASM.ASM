@@ -238,11 +238,6 @@ _setpalette PROC FAR
 	ret
 _setpalette ENDP
 
-_face	LABEL WORD
-public _face
-include face.inc
-dw	30000,30000,30000
-
 PUBLIC _sin1024
 include sin1024.inc
 

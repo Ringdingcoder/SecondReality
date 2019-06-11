@@ -4,23 +4,30 @@
 #include <conio.h>
 #include <malloc.h>
 #include <math.h>
+#include <dos.h>
 #include "..\dis\dis.h"
 
-extern int face[];
-
-extern int bpmin,bpmax;
-
 extern char *bgpic;
+char **_gp_bgpic = &bgpic;
 extern int rotsin,rotcos;
+int *_gp_rotsin = &rotsin;
+int *_gp_rotcos = &rotcos;
 extern int rows[];
+int *_gp_rows = rows;
 extern long depthtable1[];
+long *_gp_depthtable1 = depthtable1;
 extern long depthtable2[];
+long *_gp_depthtable2 = depthtable2;
 extern long depthtable3[];
+long *_gp_depthtable3 = depthtable3;
 extern long depthtable4[];
+long *_gp_depthtable4 = depthtable4;
 
 extern int dotnum;
+int *_gp_dotnum = &dotnum;
 
 extern void drawdots(void);
+void *_gp_code = drawdots;
 
 char far *vram=(char far *)0xa0000000L;
 
@@ -28,6 +35,9 @@ char	pal[768];
 char	pal2[768];
 
 extern sin1024[];
+int *_gp_sin1024 = sin1024;
+
+#define sin1024 ((int *) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_sin1024)))
 
 int	isin(int deg)
 {
@@ -39,7 +49,7 @@ int	icos(int deg)
 	return(sin1024[(deg+256)&1023]);
 }
 
-extern struct
+extern struct _dot
 {
 	int	x;
 	int	y;
@@ -50,10 +60,16 @@ extern struct
 	int	old4;
 	int	yadd;
 } dot[];
+struct _dot *_gp_dot = dot;
+
+#define dot ((struct _dot *) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_dot)))
 
 extern int gravity;
+int *_gp_gravity = &gravity;
 extern int gravitybottom;
+int *_gp_gravitybottom = &gravitybottom;
 extern int gravityd;
+int *_gp_gravityd = &gravityd;
 
 void setborder(char color)
 {
@@ -75,6 +91,8 @@ int	cols[]={
 8,40,45,
 16,55,60};
 int	dottaul[1024];
+
+#define dotnum (*(int *) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_dotnum)))
 
 main(int argc,char *argv[])
 {
@@ -110,7 +128,7 @@ main(int argc,char *argv[])
 		mode=7;
 		grav=3;
 		gravd=13;
-		gravitybottom=8105;
+		*(int*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_gravitybottom))=8105;
 		i=-1;
 	}
 	for(a=0;a<500;a++)
@@ -121,7 +139,7 @@ main(int argc,char *argv[])
 		d=dot[b].y; dot[b].y=dot[c].y; dot[c].y=d;
 		d=dot[b].z; dot[b].z=dot[c].z; dot[c].z=d;
 	}
-	for(a=0;a<200;a++) rows[a]=a*320;
+	for(a=0;a<200;a++) ((int*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_rows)))[a]=a*320;
 	_asm mov ax,13h
 	_asm int 10h
 	outp(0x3c8,0);
@@ -160,13 +178,13 @@ main(int argc,char *argv[])
 		c+=8;
 		if(c<0) c=0; else if(c>15) c=15;
 		c=15-c;
-		depthtable1[a]=0x202+0x04040404*c;
-		depthtable2[a]=0x02030302+0x04040404*c;
-		depthtable3[a]=0x202+0x04040404*c;
+		((long*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_depthtable1)))[a]=0x202+0x04040404*c;
+		((long*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_depthtable2)))[a]=0x02030302+0x04040404*c;
+		((long*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_depthtable3)))[a]=0x202+0x04040404*c;
 		//depthtable4[a]=0x02020302+0x04040404*c;
 	}
-	bgpic=halloc(64000L,1L);
-	memcpy(bgpic,vram,64000);
+	*(char **) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_bgpic)) = halloc(64000L,1L);
+	memcpy(*(char **) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_bgpic)),vram,64000);
 	a=0;
 	for(b=64;b>=0;b--)
 	{	
@@ -268,7 +286,8 @@ main(int argc,char *argv[])
 				}
 			}
 			if(dropper>4000) dropper-=100;
-			rotcos=icos(rot)*64; rotsin=isin(rot)*64;
+			*(int*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_rotcos))=icos(rot)*64;
+			*(int*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_rotsin))=isin(rot)*64;
 			rots+=2;
 			if(frame>1900) 
 			{
@@ -277,8 +296,8 @@ main(int argc,char *argv[])
 			}
 			else rot=isin(rots);
 			f++;
-			gravity=grav;
-			gravityd=gravd;
+			*(int*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_gravity))=grav;
+			*(int*) _MK_FP(_FP_SEG(_gp_code), _FP_OFF(_gp_gravityd))=gravd;
 		}
 		drawdots();
 	}
