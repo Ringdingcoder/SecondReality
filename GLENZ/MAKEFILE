@@ -1,4 +1,4 @@
-all : v.exe edge.exe
+all : v.exe
 
 objs=zoomer.obj main.obj vid.obj zoom.obj adata.obj asm.obj vec.obj math.obj _fc.obk ..\dis\disc.obj
 
