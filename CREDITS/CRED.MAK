@@ -2,7 +2,7 @@
 
 #		*Translator Definitions*
 CC = bcc +CRED.CFG
-TASM = TASM
+TASM = TASMX
 TLIB = tlib
 TLINK = tlink
 LIBPATH = E:\u2\CPP\LIB
