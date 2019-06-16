@@ -8,7 +8,7 @@ Apparently, the required build tools are:
 
 * Borland C++ 3.1
 * Borland Pascal 7
-* Microsoft Visual C++ 1.52
+* Microsoft C 6.00A
 
 I have the suspicion that I have messed up the line endings -- DOS line endings FTW!
 
