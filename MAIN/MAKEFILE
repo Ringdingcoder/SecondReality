@@ -30,7 +30,7 @@ u2.exe : $(objs1)
 	link /E /CP:1 $(objs1),u2.exe,u2.map;
 
 pack.exe : $(objs4)
-	link $(objs4),pack.exe,pack.map;
+	link /CPARMAXALLOC:1000 $(objs4),pack.exe,pack.map;
 
 final : $(objs1)
 	tasm /ML /m9 /s /JJUMPS /dFINAL=1 u2.asm
