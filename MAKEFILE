@@ -108,6 +108,9 @@ stamps\final.st:
 	cd main
 	nmake pack.exe
 	pack
+	touch u2.asm
+	nmake u2.exe
+	pack
 	cd ..
 	copy nul $@
 
