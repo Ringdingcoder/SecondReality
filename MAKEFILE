@@ -16,7 +16,6 @@ stamps=stamps\disc.st \
 	stamps\glenz.st \
 	stamps\fcp.st \
 	stamps\endscrl.st \
-	stamps\endpic.st \
 	stamps\end.st \
 	stamps\dots.st \
 	stamps\ddstars.st \
@@ -82,12 +81,6 @@ stamps\dots.st:
 
 stamps\end.st:
 	cd end
-	nmake
-	cd ..
-	copy nul $@
-
-stamps\endpic.st:
-	cd endpic
 	nmake
 	cd ..
 	copy nul $@
