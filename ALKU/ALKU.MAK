@@ -46,6 +46,16 @@ cl.lib
 |
   copy $@ ..\main\data
 
+tail.exe: alku.cfg tail.obj
+  $(TLINK) /v/x/c/P-/L$(LIBPATH) @&&|
+c0l.obj+
+tail.obj
+tail
+		# no map file
+fp87.lib+
+mathl.lib+
+cl.lib
+|
 
 #		*Individual File Dependencies*
 main.obj: alku.cfg main.c 
@@ -56,11 +66,20 @@ asmyt.obj: alku.cfg asmyt.asm
 tweak.obj: alku.cfg tweak.asm 
 	$(TASM) /M9 /MX /ZI /O TWEAK.ASM,TWEAK.OBJ
 
-include.obj: alku.cfg include.asm 
+include.obj: alku.cfg include.asm fona.inc
 	$(TASM) /M9 /MX /ZI /O INCLUDE.ASM,INCLUDE.OBJ
 
 copper.obj: alku.cfg copper.asm 
 	$(TASM) /M9 /MX /ZI /O COPPER.ASM,COPPER.OBJ
+
+fona.inc: fona.uh tail.exe
+	-incbin fona.uh fona.tmp
+	tail < fona.tmp > $@
+
+fona.uh: fona.lbm
+	-..\util\lbm2u fona.lbm $@
+
+tail.obj: tail.c
 
 #		*Compiler Configuration File*
 alku.cfg: alku.mak
