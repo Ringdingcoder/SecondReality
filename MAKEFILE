@@ -6,7 +6,6 @@ stamps=stamps\disc.st \
 	stamps\visu_c.st \
 	stamps\twist.st \
 	stamps\techno.st \
-	stamps\start.st \
 	stamps\plzpart.st \
 	stamps\panic.st \
 	stamps\pam.st \
@@ -155,12 +154,6 @@ stamps\panic.st:
 stamps\plzpart.st:
 	cd plzpart
 	make -fplzpart
-	cd ..
-	copy nul $@
-
-stamps\start.st:
-	cd start
-	nmake
 	cd ..
 	copy nul $@
 
