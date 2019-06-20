@@ -57,6 +57,17 @@ mathl.lib+
 cl.lib
 |
 
+cut64kb.exe: alku.cfg cut64kb.obj
+  $(TLINK) /v/x/c/P-/L$(LIBPATH) @&&|
+c0l.obj+
+cut64kb.obj
+cut64kb
+		# no map file
+fp87.lib+
+mathl.lib+
+cl.lib
+|
+
 #		*Individual File Dependencies*
 main.obj: alku.cfg main.c 
 
@@ -66,7 +77,7 @@ asmyt.obj: alku.cfg asmyt.asm
 tweak.obj: alku.cfg tweak.asm 
 	$(TASM) /M9 /MX /ZI /O TWEAK.ASM,TWEAK.OBJ
 
-include.obj: alku.cfg include.asm fona.inc
+include.obj: alku.cfg include.asm fona.inc hoi.in0 hoi.in1
 	$(TASM) /M9 /MX /ZI /O INCLUDE.ASM,INCLUDE.OBJ
 
 copper.obj: alku.cfg copper.asm 
@@ -76,10 +87,20 @@ fona.inc: fona.uh tail.exe
 	-incbin fona.uh fona.tmp
 	tail < fona.tmp > $@
 
+hoi.in0 hoi.in1: hoi.u tail.exe cut64kb.exe
+	cut64kb hoi.u hoi.in
+	tail 2 < hoi.in0 > hoi.tm0
+	copy hoi2.inc+hoi.tm0 hoi.in0
+
 fona.uh: fona.lbm
 	-..\util\lbm2u fona.lbm $@
 
+hoi.u: hoi.lbm
+	-..\util\lbm2u hoi.lbm $@
+
 tail.obj: tail.c
+
+cut64kb.obj: cut64kb.c
 
 #		*Compiler Configuration File*
 alku.cfg: alku.mak
