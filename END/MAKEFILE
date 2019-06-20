@@ -21,4 +21,8 @@ end.exe : $(objs)
 	link /E $(objs)+..\dis\disc.obj,end.exe,nul;
 	copy end.exe ..\main\data\endlogo.exe
 	
+_pic.obk: pic.uh
+	..\util\doobj pic.uh _pic $@
 
+pic.uh: pic.lbm
+	-..\util\lbm2p pic.lbm $@
