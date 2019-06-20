@@ -2,7 +2,7 @@ all : beg.exe
 
 # objects
 
-objs=beg.obj asm.obj
+objs=beg.obj asm.obj _pic.obk
 
 # option flags
 
@@ -18,7 +18,11 @@ c_f	= /AL /c /W3
 	cl /qc $(c_f) $<
 
 beg.exe : $(objs)
-	link /E $(objs)+_pic.obk+..\dis\disc.obj,beg.exe,nul;
+	link /E $(objs)+..\dis\disc.obj,beg.exe,nul;
 	copy beg.exe ..\main\data\beglogo.exe
 	
+_pic.obk: srtitle.up
+	..\util\doobj srtitle.up _pic $@
 
+srtitle.up: srtitle.lbm
+	-..\util\lbm2p srtitle.lbm $@
