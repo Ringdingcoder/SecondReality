@@ -51,11 +51,18 @@ main.obj: cred.cfg main.c
 tweak.obj: cred.cfg tweak.asm 
 	$(TASM) /M9 /MX /ZI /O TWEAK.ASM,TWEAK.OBJ
 
-include.obj: cred.cfg include.asm 
+include.obj: cred.cfg include.asm fona.inc
 	$(TASM) /M9 /MX /ZI /O INCLUDE.ASM,INCLUDE.OBJ
 
 includ2.obj: cred.cfg includ2.asm 
 	$(TASM) /M9 /MX /ZI /O INCLUD2.ASM,INCLUD2.OBJ
+
+fona.inc: fona.uh tail.exe
+	-incbin fona.uh fona.tmp
+	tail < fona.tmp > $@
+
+fona.uh: fona.lbm
+	-..\util\lbm2u fona.lbm $@
 
 #		*Compiler Configuration File*
 cred.cfg: cred.mak
