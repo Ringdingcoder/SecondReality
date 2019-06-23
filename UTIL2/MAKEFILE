@@ -1,0 +1,27 @@
+all : cut64kb.exe strip1b.exe tail.exe
+
+# objects
+
+# option flags
+
+c_f	= /AL /c /W3
+
+# general compile orders
+
+.c.obj :
+	cl /qc $(c_f) $<
+
+cut64kb.exe: cut64kb.obj
+	link /E cut64kb.obj,cut64kb.exe,nul;
+
+strip1b.exe: strip1b.obj
+	link /E strip1b.obj,strip1b.exe,nul;
+
+tail.exe: tail.obj
+	link /E tail.obj,tail.exe,nul;
+
+cut64kb.obj: cut64kb.c
+
+strip1b.obj: strip1b.c
+
+tail.obj: tail.c

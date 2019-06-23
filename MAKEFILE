@@ -1,4 +1,6 @@
-stamps=stamps\disc.st \
+stamps=\
+	stamps\util2.st \
+	stamps\disc.st \
 	stamps\forest.st \
 	stamps\tunneli.st \
 	stamps\water.st \
@@ -25,6 +27,12 @@ stamps=stamps\disc.st \
 	stamps\final.st
 
 all : $(stamps) 
+
+stamps\util2.st:
+	cd util2
+	nmake
+	cd ..
+	copy nul $@
 
 stamps\disc.st:
 	cd dis

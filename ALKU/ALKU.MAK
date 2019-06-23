@@ -46,28 +46,6 @@ cl.lib
 |
   copy $@ ..\main\data
 
-tail.exe: alku.cfg tail.obj
-  $(TLINK) /v/x/c/P-/L$(LIBPATH) @&&|
-c0l.obj+
-tail.obj
-tail
-		# no map file
-fp87.lib+
-mathl.lib+
-cl.lib
-|
-
-cut64kb.exe: alku.cfg cut64kb.obj
-  $(TLINK) /v/x/c/P-/L$(LIBPATH) @&&|
-c0l.obj+
-cut64kb.obj
-cut64kb
-		# no map file
-fp87.lib+
-mathl.lib+
-cl.lib
-|
-
 #		*Individual File Dependencies*
 main.obj: alku.cfg main.c 
 
@@ -83,13 +61,13 @@ include.obj: alku.cfg include.asm fona.inc hoi.in0 hoi.in1
 copper.obj: alku.cfg copper.asm 
 	$(TASM) /M9 /MX /ZI /O COPPER.ASM,COPPER.OBJ
 
-fona.inc: fona.uh tail.exe
+fona.inc: fona.uh
 	-incbin fona.uh fona.tmp
-	tail < fona.tmp > $@
+	..\util2\tail < fona.tmp > $@
 
-hoi.in0 hoi.in1: hoi.u tail.exe cut64kb.exe
-	cut64kb hoi.u hoi.in
-	tail 2 < hoi.in0 > hoi.tm0
+hoi.in0 hoi.in1: hoi.u
+	..\util2\cut64kb hoi.u hoi.in
+	..\util2\tail 2 < hoi.in0 > hoi.tm0
 	copy hoi2.inc+hoi.tm0 hoi.in0
 
 fona.uh: fona.lbm
@@ -97,10 +75,6 @@ fona.uh: fona.lbm
 
 hoi.u: hoi.lbm
 	-..\util\lbm2u hoi.lbm $@
-
-tail.obj: tail.c
-
-cut64kb.obj: cut64kb.c
 
 #		*Compiler Configuration File*
 alku.cfg: alku.mak

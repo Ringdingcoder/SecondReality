@@ -57,9 +57,10 @@ include.obj: cred.cfg include.asm fona.inc
 includ2.obj: cred.cfg includ2.asm 
 	$(TASM) /M9 /MX /ZI /O INCLUD2.ASM,INCLUD2.OBJ
 
-fona.inc: fona.uh tail.exe
-	-incbin fona.uh fona.tmp
-	tail < fona.tmp > $@
+fona.inc: fona.uh
+	..\util2\strip1b fona.uh fona.utm
+	-incbin fona.utm fona.tmp
+	..\util2\tail < fona.tmp > $@
 
 fona.uh: fona.lbm
 	-..\util\lbm2u fona.lbm $@

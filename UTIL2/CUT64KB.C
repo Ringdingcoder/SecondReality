@@ -45,5 +45,6 @@ int main(int argc, char *argv[])
             shipline(fout, line, linepos);
         fclose(fout);
     }
+    fclose(fin);
     return 0;
 }
