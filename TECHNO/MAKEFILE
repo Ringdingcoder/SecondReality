@@ -1,4 +1,4 @@
-all : koe.exe 
+all : koe.exe troll.up
 
 # objects
 
@@ -23,4 +23,6 @@ koe.exe : $(objs)
 	link /E $(objs)+$(data)+..\dis\disc.obj,koe.exe,koe.map;
 	copy koe.exe ..\main\data\techno.exe
 	
-
+troll.up: panicpic.lbm
+	-..\util\lbm2p panicpic.lbm $@
+    copy troll.up ..\main\data
