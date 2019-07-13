@@ -1,0 +1,34 @@
+all: demo.exe
+
+binobjs=bkg.obj wat1.obj wat2.obj wat3.obj wat4.obj
+
+.asm.obj:
+	tasm $<
+
+demo.exe: demo.pas t1.pas t2.pas t3.pas bkr.pas miek.pas routines.obj $(binobjs)
+	bpc /m demo
+
+bkg.obj: bkg.asm bkg.inc
+
+wat1.obj: wat1.asm wat1.inc
+
+wat2.obj: wat2.asm wat2.inc
+
+wat3.obj: wat3.asm wat3.inc
+
+wat4.obj: wat4.asm wat4.inc
+
+bkg.inc: bkg.clx
+	-..\credits\incbin bkg.clx $@
+
+wat1.inc: wat1.dat
+	-..\credits\incbin wat1.dat $@
+
+wat2.inc: wat2.dat
+	-..\credits\incbin wat2.dat $@
+
+wat3.inc: wat3.dat
+	-..\credits\incbin wat3.dat $@
+
+wat4.inc: wat4.dat
+	-..\credits\incbin wat4.dat $@

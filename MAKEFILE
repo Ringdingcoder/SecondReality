@@ -199,8 +199,7 @@ stamps\visu_c.st:
 
 stamps\water.st:
 	cd water
-	tasm routines
-	bpc /m demo
+	nmake
 	copy demo.exe ..\main\data\rayscrl.exe
 	cd ..
 	copy nul $@

@@ -1,0 +1,9 @@
+	IDEAL
+
+SEGMENT CODE byte use16 public
+PUBLIC wat1
+LABEL wat1 BYTE
+INCLUDE "wat1.inc"
+ENDS
+
+END
