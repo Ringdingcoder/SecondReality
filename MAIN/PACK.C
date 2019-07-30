@@ -174,6 +174,7 @@ void dofile1(void)
 			pos+=dir[i].fsize;
 		}
 		fclose(f3);
+		system("nmake final");
 		system("copy U2.EXE SECOND.EXE");
 		f1=fopen("SECOND.EXE","ab");
 		fseek(f1,0L,SEEK_END);

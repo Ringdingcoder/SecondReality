@@ -21,7 +21,7 @@ c_f	= /AL /c /W1
 ################################################################
 
 .asm.obj : 
-	tasm $(asm_f) /dFINAL=1 $<
+	tasmx $(asm_f) /dFINAL=1 $<
 	
 .c.obj : 
 	cl /qc $(c_f) $<
@@ -33,8 +33,9 @@ pack.exe : $(objs4)
 	link /CPARMAXALLOC:1000 $(objs4),pack.exe,pack.map;
 
 final : $(objs1)
-	tasm /ML /m9 /s /JJUMPS /dFINAL=1 u2.asm
+	tasmx /ML /m9 /s /JJUMPS /dFINAL=1 u2.asm
 	link /E /CP:1 $(objs1),u2.exe,u2.map;
+	lzexe u2.exe
 	..\fcp\fcprot u2.exe -1
 	touch u2.exe
 	copy u2.exe prot\test.exe
@@ -42,6 +43,7 @@ final : $(objs1)
 	make
 	cd ..
 	copy prot\prot.exe u2.exe
+	lzexe u2.exe
 	..\fcp\fcprot u2.exe -1
 
 packing.inc: packfina.inc

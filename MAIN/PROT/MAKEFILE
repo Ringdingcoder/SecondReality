@@ -10,7 +10,7 @@ run2.inc: run2.obj crypt.exe
 	-incbin run2.bin run2.inc
 
 run2.obj: run2.asm run1.inc
-	tasm /m9 /l run2.asm             
+	tasmx /m9 /l run2.asm
 
 run1.inc: run1.obj
 	tlink /t run1.obj,run1.bin
