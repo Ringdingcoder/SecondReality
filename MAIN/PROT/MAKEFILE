@@ -29,7 +29,7 @@ test.exe: test.asm
 	tlink test
 
 crypt.exe: crypt.c asmyt.asm 
-	bcc crypt.c asmyt.asm
+	bcc -ml crypt.c asmyt.asm
 	
 split.exe: split.c
 	bcc split.c
