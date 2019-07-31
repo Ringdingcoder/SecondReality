@@ -104,7 +104,7 @@ void	dofile2(void)
 	fclose(f1);
 }
 
-void dofile1(void)
+int dofile1(void)
 {
 	int	done,exe;
 	struct  find_t ff;
@@ -174,7 +174,10 @@ void dofile1(void)
 			pos+=dir[i].fsize;
 		}
 		fclose(f3);
-		system("nmake final");
+		system("mkf");
+		f1 = fopen("final.err", "r");
+		if (f1)
+			return 1;
 		system("copy U2.EXE SECOND.EXE");
 		f1=fopen("SECOND.EXE","ab");
 		fseek(f1,0L,SEEK_END);
@@ -219,7 +222,7 @@ void dofile1(void)
 	return(0);
 }
 
-main(int argc,char *argv[])
+int main(int argc,char *argv[])
 {
 	int	a;
 	printf(	"\n"
@@ -230,6 +233,7 @@ main(int argc,char *argv[])
 	strcpy(inname,"SECOND.EXE");
 	strcpy(outdir,"DATA\\");
 	if(argc>1) dofile2();
-	else dofile1();
+	else return dofile1();
+	return 0;
 }
 

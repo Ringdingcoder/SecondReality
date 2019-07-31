@@ -33,7 +33,6 @@ pack.exe : $(objs4)
 	link /CPARMAXALLOC:1000 $(objs4),pack.exe,pack.map;
 
 final : $(objs1)
-	tasmx /ML /m9 /s /JJUMPS /dFINAL=1 u2.asm
 	link /E /CP:1 $(objs1),u2.exe,u2.map;
 	lzexe u2.exe
 	..\fcp\fcprot u2.exe -1
