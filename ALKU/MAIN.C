@@ -312,15 +312,6 @@ dofade(char far *pal1, char far *pal2)
 	}
 char	fuckpal[768];
 
-fdofade(char far *pal1, char far *pal2, int a)
-	{
-	int	b,c;
-
-	if(a<0 || a>64) return(0);
-	for(b=0;b<768;b++) fuckpal[b]=(pal1[b]*(64-a)+pal2[b]*a>>6);
-	cop_pal=fuckpal; do_pal=1;
-	}
-
 addtext(int tx,int ty,char *txt)
 	{
 	int	a,b,c,x,y,w=0;
@@ -339,36 +330,6 @@ addtext(int tx,int ty,char *txt)
 		}
 	}
 
-
-maketext(int scrl)
-	{
-	char 	far *vvmem=MK_FP(0x0a000,0);
-	int	*p1=dtau;
-	int	mtau[]={1*256+2,2*256+2,4*256+2,8*256+2};
-	int	a,b,c,x,y,m;
-
-	for(m=0;m<4;m++)
-		{
-		for(x=m;x<320;x+=4) for(y=1;y<184;y++)
-			if(tbuf[y][x]!=tbuf[y][x-2]) {
-				*p1++=x/4+y*176+100*176;
-				*p1++=tbuf[y][x]^tbuf[y][x-2];
-				}
-		*p1++=-1;
-		*p1++=-1;
-		}
-
-	for(x=0;x<320;x++)
-		{
-		outport(0x3c4,mtau[(x+scrl)&3]);
-		outport(0x3ce,((x+scrl)&3)*256+4);
-		for(y=1;y<184;y++)
-			{
-			vvmem[y*176+176*100+(x+scrl)/4]^=tbuf[y][x-1-1];
-			vvmem[y*176+176*100+(x+scrl)/4+88]^=tbuf[y][x-1];
-			}
-		}
-	}
 
 scrolltext(int scrl)
 	{
@@ -492,20 +453,6 @@ ffonapois()
 	outport(0x3ce,0x0304);
 	for(a=40*64;a<40U*(64+256+10);a++) vvmem[a]=vvmem[a]&0x3f3f3f3f;
 	do_scroll(0);
-	}
-
-char far cfpal[768*2];
-int far cop_fade;
-
-fffade(char far *pal1, char far *pal2, int frames)
-	{
-	int	a,b,c;
-	for(a=0;a<768;a++)
-		{
-		cfpal[a]=pal1[a];
-		cfpal[a+768]=(pal2[a]-pal1[a])*256/frames;
-		}
-	cop_fade=frames;
 	}
 
 /*
