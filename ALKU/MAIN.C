@@ -138,7 +138,7 @@ main()
 			while(((a&1) || dis_sync()<4+tptr) && !dis_exit() && a<319)
 				do_scroll(0);
 			aa=a;
-			if(aa<320-12) fmaketext(aa+16);
+			if(aa<320-16) fmaketext(aa+16);
 			f=0;
 			}
 		else	f++;
