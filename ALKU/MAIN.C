@@ -142,7 +142,7 @@ main()
 			f=0;
 			}
 		else	f++;
-		do_scroll(1);
+		do_scroll(tptr < 5 ? 1 : 0);
 		}
 	if(f>63/SCRLF){
 		dofade(palette2,palette);
