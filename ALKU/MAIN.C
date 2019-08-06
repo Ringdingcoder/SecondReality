@@ -46,6 +46,8 @@ char	far tbuf[186][352];
 
 int	a=0,p=0,tptr=0;
 
+void restore();
+
 main()
 	{
 	int	aa,b,c,x,y,f;
@@ -148,8 +150,96 @@ main()
 		dofade(palette2,palette);
 		}
 	fonapois();
-	close_copper();
+	restore();
 	}
+
+void bw_copy_to_vmem(char far *dest, char far *src, int len)
+{
+    while (len--)
+        *dest++ = *src++;
+}
+
+void restore()
+{
+	int y, i;
+	char 	far *vvmem;
+
+	p = 0;
+	cop_start = a/4; cop_scrl = 0;
+	cop_pal = palette; do_pal = 1;
+	frame_count = 0;
+	while (!frame_count);
+
+	outport(0x3c4,0x0f02);
+	outport(0x3ce,0x4105);
+
+	for (y = 0; y < 200; y++)
+		bw_copy_to_vmem(MK_FP(0xa000, a/4 + y*176 + 1848), MK_FP(0xa000, a/4 + (y>180?180:y)*352), 80);
+
+	cop_start = a/4 + 1848;
+	frame_count = 0;
+	while (!frame_count);
+
+	outport(0x3d4,0x0109);
+
+	for (y = 0; y < 200; y++)
+		bw_copy_to_vmem(MK_FP(0xa000, y*80 + 0xc000), MK_FP(0xa000, a/4 + y*176 + 1848), 80);
+
+	outport(0x3ce,0x4005);
+	outport(0x3c4,0x0102);
+	outport(0x3ce,0x0004);
+
+	vvmem = MK_FP(0x9fff,0xc000);
+	for (i=0; i<16384; i++) {
+		*vvmem = (*vvmem & 0x3f) + 0xc0;
+		vvmem++;
+	}
+
+	outport(0x3c4,0x0202);
+	outport(0x3ce,0x0104);
+
+	vvmem = MK_FP(0x9fff,0xc000);
+	for (i=0; i<16384; i++) {
+		*vvmem = (*vvmem & 0x3f) + 0xc0;
+		vvmem++;
+	}
+
+	outport(0x3c4,0x0402);
+	outport(0x3ce,0x0204);
+
+	vvmem = MK_FP(0x9fff,0xc000);
+	for (i=0; i<16384; i++) {
+		*vvmem = (*vvmem & 0x3f) + 0xc0;
+		vvmem++;
+	}
+
+	outport(0x3c4,0x0802);
+	outport(0x3ce,0x0304);
+
+	vvmem = MK_FP(0x9fff,0xc000);
+	for (i=0; i<16384; i++) {
+		*vvmem = (*vvmem & 0x3f) + 0xc0;
+		vvmem++;
+	}
+
+	outport(0x3ce,0x4105);
+
+	cop_start = 0xc000;
+	frame_count = 0;
+	while (!frame_count);
+
+	outport(0x3d4,0x2813);
+
+	bw_copy_to_vmem(MK_FP(0xa000, 0x0000), MK_FP(0x9fff, 0xc000), 0x3e80);
+	bw_copy_to_vmem(MK_FP(0xa000, 0x4000), MK_FP(0x9fff, 0xc000), 0x3e80);
+	bw_copy_to_vmem(MK_FP(0x9fff, 0x8000), MK_FP(0x9fff, 0xc000), 0x3e80);
+
+	outport(0x3ce,0x4005);
+	outport(0x3d4,0x4109);
+
+	close_copper();
+	_exit(0);
+}
 
 init()	{
 	int	a,b,c,x,y,p=0,f;
