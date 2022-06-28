@@ -6,8 +6,6 @@
 #include <math.h>
 #include "..\dis\dis.h"
 
-extern int face[];
-
 extern int bpmin,bpmax;
 
 extern char *bgpic;
