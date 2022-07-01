@@ -82,7 +82,7 @@ main(int argc,char *argv[])
 	int	rota=-1*64;
 	int	fb=0;
 	int	rot=0,rots=0;
-	int	a,b,c,d,i,j,mode;
+	int	a,b,c,d,i,j=0,mode;
 	int	grav,gravd;
 	int	f=0;
 	dis_partstart();
