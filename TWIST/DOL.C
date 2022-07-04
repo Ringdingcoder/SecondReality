@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <conio.h>
 #include <stdarg.h>
@@ -8,8 +9,6 @@ int	from=6,to=198;
 int	cent=160;
 
 FILE	*f1;
-
-unsigned char *vram=(char *)0xa0000000L;
 
 void	P(char *str,...)
 {
@@ -28,25 +27,20 @@ main()
 {
 	int	i,j,x,y,a,sk1,sk2,sk3,sk4,sfl,la;
 	unsigned int u;
-	char	*v;
+	char	*v, *vram;
 	long	l;
 	
-	_asm mov ax,13h
-	_asm int 10h
+	printf("something!\n");
+	vram = malloc(64000);
+	printf("something2\n");
 	f1=fopen("tmp.uh","rb");
 	fread(palette,1,16,f1);
 	fread(palette,1,768,f1);
+	printf("vram %d, %p\n", sizeof(vram), vram);
 	fread(vram,1,64000,f1);
 	for(u=1;u<64000;u++)
 	{
 		vram[u-1]=palette[vram[u]*3];
-	}
-	outp(0x3c8,0);
-	for(a=0;a<64;a++)
-	{
-		outp(0x3c9,a);
-		outp(0x3c9,a);
-		outp(0x3c9,a);
 	}
 	fclose(f1);
 	for(y=0;y<200;y++)
@@ -68,7 +62,6 @@ main()
 	P("twist PROC NEAR");
 	for(y=0;y<200;y++)
 	{
-		kbhit();
 		P("twist%il:",y);
 		P("mov dx,3c4h");
 		P("mov ax,0f02h");
@@ -109,7 +102,4 @@ main()
 	}
 	P("twist ENDP");
 	fclose(f1);
-	getch();
-	_asm mov ax,3h
-	_asm int 10h
 }
