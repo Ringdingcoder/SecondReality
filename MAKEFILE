@@ -32,7 +32,7 @@ stamps\util2.st:
 	cd util2
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\disc.st:
 	cd dis
@@ -44,25 +44,25 @@ stamps\disc.st:
 	copy dis\disc.obj pam
 	copy dis\disc.obj panic
 	copy dis\disc.obj plzpart
-	copy nul $@
+	type nul > $@
 
 stamps\alku.st:
 	cd alku
 	make -falku
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\beg.st:
 	cd beg
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\coman.st:
 	cd coman
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\credits.st:
 	cd credits
@@ -72,37 +72,37 @@ stamps\credits.st:
 	-cmd /c unpack
 	make -fcred
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\ddstars.st:
 	cd ddstars
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\dots.st:
 	cd dots
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\end.st:
 	cd end
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\endscrl.st:
 	cd endscrl
 	make -fendscrl
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\fcp.st:
 	cd fcp
 	make -ffcp fcprot.exe
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\final.st:
 	cd main
@@ -112,7 +112,7 @@ stamps\final.st:
 	cd ..
 	pack
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\forest.st:
 	cd forest
@@ -120,56 +120,56 @@ stamps\forest.st:
 	bpc /m read2
 	copy read2.exe ..\main\data\mntscrl.exe
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\glenz.st:
 	cd glenz
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\jplogo.st:
 	cd jplogo
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\lens.st:
 	cd lens
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\main.st:
 	cd main
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\pam.st:
 	cd pam
 	make -fanim
 	make -fpam
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\panic.st:
 	cd panic
 	make -fsd
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\plzpart.st:
 	cd plzpart
 	make -fplzpart
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\techno.st:
 	cd techno
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\tunneli.st:
 	cd tunneli
@@ -177,29 +177,29 @@ stamps\tunneli.st:
 	bpc /m tun10
 	copy tun10.exe ..\main\data\tunneli.exe
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\twist.st:
 	cd twist
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\visu.st:
 	cd visu
 	nmake
 	cd ..
-	copy nul $@
+	type nul > $@
 
 stamps\visu_c.st:
 	cd visu\c
 	nmake u2a.exe u2e.exe
 	cd ..\..
-	copy nul $@
+	type nul > $@
 
 stamps\water.st:
 	cd water
 	nmake
 	copy demo.exe ..\main\data\rayscrl.exe
 	cd ..
-	copy nul $@
+	type nul > $@
