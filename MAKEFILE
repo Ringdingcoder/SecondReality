@@ -6,7 +6,6 @@ stamps=\
 	stamps\water.st \
 	stamps\visu.st \
 	stamps\visu_c.st \
-	stamps\twist.st \
 	stamps\techno.st \
 	stamps\plzpart.st \
 	stamps\panic.st \
@@ -176,12 +175,6 @@ stamps\tunneli.st:
 	tasm routines
 	bpc /m tun10
 	copy tun10.exe ..\main\data\tunneli.exe
-	cd ..
-	type nul > $@
-
-stamps\twist.st:
-	cd twist
-	nmake
 	cd ..
 	type nul > $@
 
