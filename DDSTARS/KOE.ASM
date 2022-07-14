@@ -6,8 +6,6 @@ code 	SEGMENT para public 'CODE'
 LOCALS
 .386
 
-include sin1024.inc ;_sin1024
-
 PLANE	MACRO pl
 	mov	dx,3c4h
 	mov	ax,0002h+pl*100h
