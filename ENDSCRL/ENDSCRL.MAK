@@ -44,8 +44,17 @@ cl.lib
 #		*Individual File Dependencies*
 main.obj: endscrl.cfg main.c 
 
-asmyt.obj: endscrl.cfg asmyt.asm 
+asmyt.obj: endscrl.cfg asmyt.asm fona.inc
 	$(TASM) /M9 /MX /ZI /O ASMYT.ASM,ASMYT.OBJ
+
+fona.inc: fona.uh
+# This strips away the palette part
+	..\util2\strip1b fona.uh fona.utm
+	-..\credits\incbin fona.utm fona.tmp
+	..\util2\tail < fona.tmp > $@
+
+fona.uh: fona.lbm
+	-..\util\lbm2u fona.lbm $@
 
 #		*Compiler Configuration File*
 endscrl.cfg: endscrl.mak
