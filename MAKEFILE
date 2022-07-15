@@ -116,6 +116,10 @@ stamps\final.st:
 stamps\forest.st:
 	cd forest
 	tasm routines
+	binobj pos1.dat pos1 posi1
+	binobj pos2.dat pos2 posi2
+	binobj pos3.dat pos3 posi3
+	binobj hillback.clx hillback hback
 	bpc /m read2
 	copy read2.exe ..\main\data\mntscrl.exe
 	cd ..
