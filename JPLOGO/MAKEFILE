@@ -19,7 +19,18 @@ c_f	= /AL /c /W3 /Oxaz
 .c.obj : 
 	cl $(c_f) $<
 
-jp.exe : $(objs)
+jp.exe : $(objs) _pic.obk
 	link /E $(objs)+_pic.obk+..\dis\disc.obj,jp.exe,nul;
 	copy jp.exe ..\main\data\jplogo.exe
 
+zoom.inc: dol.exe
+	dol
+
+dol.exe: dol.c
+	cl /AL dol.c
+
+_pic.obk: pic.up
+	..\util\doobj pic.up _pic $@
+
+pic.up: pic.lbm
+	-..\util\lbm2p pic.lbm $@
