@@ -67,8 +67,6 @@ fona.inc: fona.uh
 
 hoi.in0 hoi.in1: hoi.u
 	..\util2\cut64kb hoi.u hoi.in
-	..\util2\tail 2 < hoi.in0 > hoi.tm0
-	copy hoi2.inc+hoi.tm0 hoi.in0
 
 fona.uh: fona.lbm
 	-..\util\lbm2u fona.lbm $@
