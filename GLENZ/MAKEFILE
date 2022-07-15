@@ -24,3 +24,9 @@ edge.exe : edge.c
 	cl /qc /AL edge.c
 
 zoom.asm : zoomloop.inc
+
+zoomloop.inc: doloop.exe
+	doloop
+
+doloop.exe: doloop.c
+	cl /AL doloop.c
