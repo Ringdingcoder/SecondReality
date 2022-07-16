@@ -30,3 +30,9 @@ zoomloop.inc: doloop.exe
 
 doloop.exe: doloop.c
 	cl /AL doloop.c
+
+_fc.obk: fc.uh
+	..\util\doobj fc.uh _fc $@
+
+fc.uh: fc.lbm
+	-..\util\lbm2u fc.lbm $@
