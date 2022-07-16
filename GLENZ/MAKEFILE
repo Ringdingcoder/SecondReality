@@ -12,7 +12,7 @@ c_f	= /AL /c /Oxaz /W2
 	cl /qc $(c_f) $<
 
 v.exe : $(objs)
-	link /E $(objs),v.exe,v.map,gl10.lib;
+	link /E $(objs),v.exe,v.map,;
 	copy v.exe ..\main\data\glenz.exe
 
 vid.asm : vidpoly.asm vidinit.asm vidmisc.asm vidtwe.asm vidnrm.asm
