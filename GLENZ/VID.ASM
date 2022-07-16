@@ -404,6 +404,30 @@ clearpage PROC FAR
 	ret
 clearpage ENDP
 
+PUBLIC _setpalarea
+_setpalarea PROC FAR
+	push	bp
+	mov	bp,sp
+	push	si
+	push	di
+	push	ds
+	mov	si,[bp+6]
+	mov	ds,[bp+8]
+	mov	ax,[bp+10]
+	mov	dx,3c8h
+	out	dx,al
+	inc	dx
+	mov	cx,[bp+12]
+	shl	cx,1
+	add	cx,ax
+	rep	outsb
+	pop	ds
+	pop	di
+	pop	si
+	pop	bp
+	ret
+_setpalarea ENDP
+
 text__vid ENDS
 	END
 	
