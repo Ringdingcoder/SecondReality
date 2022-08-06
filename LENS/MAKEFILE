@@ -27,3 +27,27 @@ lens.exe : $(objs)
 
 calc.exe : calc.c
 	cl /W3 /AL /qc calc.c /link /E
+
+_filler.obk:
+	..\util\doobj filler _filler $@
+
+_lensex0.obk:
+	..\util\doobj lens.ex0 _lensex0 $@
+
+_lensex1.obk:
+	..\util\doobj lens.ex1 _lensex1 $@
+
+_lensex2.obk:
+	..\util\doobj lens.ex2 _lensex2 $@
+
+_lensex3.obk:
+	..\util\doobj lens.ex3 _lensex3 $@
+
+_lensex4.obk:
+	..\util\doobj lens.ex4 _lensex4 $@
+
+_lensexb.obk:
+	..\util\doobj lens.exb _lensexb $@
+
+_lensexp.obk:
+	..\util\doobj lens.exp _lensexp $@
