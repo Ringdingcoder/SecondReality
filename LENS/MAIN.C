@@ -8,19 +8,7 @@ extern char lensex1[];
 extern char lensex2[];
 extern char lensex3[];
 extern char lensex4[];
-extern char lensexp[];
 extern char lensexb[];
-
-#define noSAVEPATH
-
-#ifdef SAVEPATH
-FILE	*fp;
-int	pathstart2;
-#else 
-int	*pathdata1;
-int	*pathdata2;
-char	pathdata[13000];
-#endif
 
 char *vram=(char *)0xA0000000L;
 int *lens1,*lens2,*lens3,*lens4;
@@ -149,9 +137,6 @@ void	part2(void)
 			if(a<0) a=0;
 			setpalarea(fade2+a*3*192,64,192);
 		}
-		#ifdef SAVEPATH
-		putw(x/64,fp);
-		putw(y/64,fp);
 		drawlens(x/64,y/64);
 		x+=xa; y+=ya;
 		if(x>256*64 || x<60*64) xa=-xa;
@@ -166,11 +151,6 @@ void	part2(void)
 			else ya=-ya*9/10;
 		}
 		ya+=2;
-		#else
-		x=pathdata1[frame*2+0];
-		y=pathdata1[frame*2+1];
-		drawlens(x,y);
-		#endif
 		a=waitb();
 		uframe+=a;
 		if(a>3) a=3;
@@ -211,7 +191,6 @@ void	part3(void)
 		while(!dis_exit() && frame<2000)
 		{	
 			if(dis_musplus()>-4) break;
-			#ifdef SAVEPATH
 			x=70.0*sin(d1)-30;
 			y=70.0*cos(d1)+60;
 			d1-=.005;
@@ -220,10 +199,6 @@ void	part3(void)
 			x-=xa/16;
 			y-=ya/16;
 			d2+=d3;
-			putw(x,fp);
-			putw(y,fp);
-			putw(xa,fp);
-			putw(ya,fp);
 			rotate(x,y,xa,ya);
 			scale+=scalea;
 			if(frame>25)
@@ -250,13 +225,6 @@ void	part3(void)
 				a=frame-900; if(a>100) a=100;
 				if(scalea<256) scalea+=0.000001*a;
 			}
-			#else
-			x=pathdata2[frame*4+0];
-			y=pathdata2[frame*4+1];
-			xa=pathdata2[frame*4+2];
-			ya=pathdata2[frame*4+3];
-			rotate(x,y,xa,ya);
-			#endif
 			frame+=waitb();
 			if(frame>2000-128)
 			{
@@ -292,11 +260,6 @@ main()
 	setvmode(0x13);
 	outp(0x3c8,0);
 	for(a=0;a<768;a++) outp(0x3c9,0);
-	#ifndef SAVEPATH
-	a=*(int *)(lensexp+2);
-	pathdata1=(int *)(lensexp+4);
-	pathdata2=(int *)(lensexp+4+2*a);
-	#endif
 	memcpy(palette,lensexb+16,768);
 	back=(char *)((long)lensexb+((768+16)/16)*65536L);
 	memcpy(back+64000,back+64000-1536,1536);
@@ -370,25 +333,9 @@ main()
 	waitb();
 	setpalarea(palette,0,256);
 
-	#ifdef SAVEPATH
-	fp=fopen("lens.exp","wb");
-	putw(0,fp);
-	putw(0,fp);
-	#endif
-
 	if(!dis_exit()) part1();
 	while(!dis_exit() && dis_musplus()<-20) ;
 	dis_waitb();
 	if(!dis_exit()) part2();
-	#ifdef SAVEPATH
-	pathstart2=(ftell(fp)-4)/2;
-	#endif
 	if(!dis_exit()) part3();
-	
-	#ifdef SAVEPATH
-	rewind(fp);
-	putw(0,fp);
-	putw(pathstart2,fp);
-	fclose(fp);
-	#endif
 }
