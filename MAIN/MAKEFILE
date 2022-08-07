@@ -1,4 +1,4 @@
-all : u2.exe data\start.exe data\startmus.exe 
+all : data\start.exe data\startmus.exe 
 
 objs1=u2.obj stmik.300
 
@@ -26,9 +26,6 @@ c_f	= /AL /c /W1
 .c.obj : 
 	cl /qc $(c_f) $<
 	
-u2.exe : $(objs1)
-	link /E /CP:1 $(objs1),u2.exe,u2.map;
-
 pack.exe : $(objs4)
 	link /CPARMAXALLOC:1000 $(objs4),pack.exe,pack.map;
 
