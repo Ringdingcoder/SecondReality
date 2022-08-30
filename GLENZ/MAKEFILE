@@ -12,7 +12,7 @@ c_f	= /AL /c /Oxaz /W2
 	cl /qc $(c_f) $<
 
 v.exe : $(objs)
-	link /E $(objs),v.exe,v.map,gl10.lib;
+	link /E $(objs),v.exe,v.map,;
 	copy v.exe ..\main\data\glenz.exe
 
 vid.asm : vidpoly.asm vidinit.asm vidmisc.asm vidtwe.asm vidnrm.asm
@@ -24,3 +24,15 @@ edge.exe : edge.c
 	cl /qc /AL edge.c
 
 zoom.asm : zoomloop.inc
+
+zoomloop.inc: doloop.exe
+	doloop
+
+doloop.exe: doloop.c
+	cl /AL doloop.c
+
+_fc.obk: fc.uh
+	..\util\doobj fc.uh _fc $@
+
+fc.uh: fc.lbm
+	-..\util\lbm2u fc.lbm $@

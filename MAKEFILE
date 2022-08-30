@@ -35,7 +35,7 @@ stamps\util2.st:
 
 stamps\disc.st:
 	cd dis
-	nmake
+	nmake disc.obj
 	cd ..
 	copy dis\disc.obj alku
 	copy dis\disc.obj credits
@@ -109,6 +109,7 @@ stamps\final.st:
 	cd data
 	pklite -a *
 	cd ..
+	pack music
 	pack
 	cd ..
 	type nul > $@
@@ -116,6 +117,10 @@ stamps\final.st:
 stamps\forest.st:
 	cd forest
 	tasm routines
+	binobj pos1.dat pos1 posi1
+	binobj pos2.dat pos2 posi2
+	binobj pos3.dat pos3 posi3
+	binobj hillback.clx hillback hback
 	bpc /m read2
 	copy read2.exe ..\main\data\mntscrl.exe
 	cd ..

@@ -18,8 +18,6 @@ extern int	m_soundquality;
 extern int	m_looping;
 extern int	m_exit;
 
-#include "vgasave.c"
-
 char far *tvram=(char far *)0xb8000000L;
 
 main(int argc,char *argv[])

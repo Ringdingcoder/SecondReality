@@ -1,17 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 char buf[64000];
 
-char *vram=(char *)0xA0000000L;
-
-void	setrgb(int c,int r,int g,int b)
-{
-	outp(0x3c8,c);
-	outp(0x3c9,r);
-	outp(0x3c9,g);
-	outp(0x3c9,b);
-}
+char *vram;
 
 int	cx=76,cy=58,ymax=120,xmax=150;
 double	full;
@@ -50,20 +43,12 @@ main()
 	int	col,z=0,c;
 	FILE	*f1;
 	char	tmp[40];
-	_asm mov ax,13h
-	_asm int 10h
-	setrgb(0,0,0,0);
-	setrgb(1,10,20,30);
-	setrgb(2,20,30,40);
-	setrgb(3,30,40,50);
-	for(a=16;a<250;a++)
-	{
-		setrgb(a,a/2,a,a/2);
-	}
+        vram = malloc(64000);
 	bx=by=0;
 	for(col=1;col<=4;col++)
 	{
-		f1=fopen("lens.u","rb");
+		f1=fopen("lens.uh","rb");
+		fread(buf,1,784,f1);
 		fread(buf,1,64000,f1);
 		memcpy(vram,buf,64000,f1);
 		fclose(f1);
@@ -167,6 +152,4 @@ main()
 	fprintf(f1,"...By decrypting the following coded message, you can learn secrets you never new existed.\n");
 	for(a=0;a<111;a++) putc(rand()^rand(),f1);
 	fclose(f1);
-	_asm mov ax,3
-	_asm int 10h
 }
