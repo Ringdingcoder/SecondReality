@@ -49,7 +49,7 @@ outtaa.obj: pam.cfg outtaa.c
 asmyt.obj: pam.cfg asmyt.asm 
 	$(TASM) /M9 /MX /ZI /O ASMYT.ASM,ASMYT.OBJ
 
-include.obj: pam.cfg include.asm 
+include.obj: pam.cfg include.asm out.in0 pal.inc
 	$(TASM) /M9 /MX /ZI /O INCLUDE.ASM,INCLUDE.OBJ
 
 tweak.obj: pam.cfg tweak.asm 
@@ -57,6 +57,18 @@ tweak.obj: pam.cfg tweak.asm
 
 copper.obj: pam.cfg copper.asm 
 	$(TASM) /M9 /MX /ZI /O COPPER.ASM,COPPER.OBJ
+
+out.u: prax4.fli
+	vfli prax4.fli
+
+out.ani: out.u
+	anim
+
+out.in0: out.ani
+	..\util2\cut64kb out.ani out.in
+
+pal.inc: out.u
+	-..\credits\incbin pal.pal $@
 
 #		*Compiler Configuration File*
 pam.cfg: pam.mak

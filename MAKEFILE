@@ -153,6 +153,7 @@ stamps\main.st:
 stamps\pam.st:
 	cd pam
 	make -fanim
+	make -fvfli
 	make -fpam
 	cd ..
 	type nul > $@

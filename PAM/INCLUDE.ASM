@@ -10,7 +10,6 @@ INCLUDE 'out.in0'
 ENDS
 
 SEGMENT kakka3 byte use16 private 'FAR_DATA'
-LABEL multable128 WORD
 INCLUDE 'out.in1'
 ENDS
 

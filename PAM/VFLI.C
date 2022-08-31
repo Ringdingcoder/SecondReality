@@ -1,48 +1,32 @@
 #include <stdio.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <dos.h>
 
-unsigned char far *vram=(char far *)0xa0000000;
+unsigned char far *vram;
 
 int	blocksleft=999;
 
 int	wid,hig,pics;
 
-long	cnt[256];
-char	lookup[256];
-
 char	palette[768];
-char	ownpal[768];
 
-int	docoltable;
-int	colorlookup;
-int	oktoviewpal;
-int	useownpal;
 int	savefcp;
 
 FILE	*out;
 
 main(int argc,char *argv[])
 {
-	int	a;
 	FILE	*f1;
 	FILE	*ppp;
+        vram = malloc(64000);
 	f1=fopen(argv[1],"rb");
 	if(f1==NULL) return(0);
 	out=fopen("out.u","wb");
 	if(out==NULL) return(0);
 
-	_asm	mov	ax,19
-	_asm	int	10h
-
-	for(a=0;a<256;a++) lookup[a]=a;
-
-	docoltable=1;
-	oktoviewpal=0;
-	useownpal=0;
 	savefcp=1;
-	rewind(f1); readflic(f1,0);
+	rewind(f1); readflic(f1);
 
 	ppp=fopen("pal.pal","wb");
 	if(ppp!=0)
@@ -51,12 +35,10 @@ main(int argc,char *argv[])
 		fclose(ppp);
 		}
 
-	_asm	mov	ax,3
-	_asm	int	10h
 	fclose(f1);
 }
 
-int	readflic(FILE *f1,int flag)
+int	readflic(FILE *f1)
 {
 	int	a;
 	long	len,l,ll;
@@ -90,15 +72,6 @@ int	readflic(FILE *f1,int flag)
 			if(blocksleft==0)
 			{
 				fseek(f1,ll,SEEK_SET);
-				{
-					int	x,y;
-					unsigned u;
-					for(y=0;y<hig;y++)
-					{
-						u=y*320;
-						for(x=0;x<wid;x++) cnt[vram[u++]]++;
-					}
-				}
 				if(savefcp)
 				{
 					static int framecnt=0;
@@ -108,44 +81,16 @@ int	readflic(FILE *f1,int flag)
 //						outportb(0x3c9,47);
 //						outportb(0x3c9,47);
 //						outportb(0x3c9,47);
-						fwrite(MK_FP(0x0a000,0),1,64000,out);
+						fwrite(vram,1,64000,out);
 					}
 				}
-				if(flag&1) getch();
 			}
 		}
 	}
 }
 
-int	viewpal(void)
-{
-	int	a;
-	unsigned u;
-	for(a=0;a<256;a++)
-	{
-		u=(a>>4)*3+320-48+((a&15)*3+200-48)*320;
-		vram[u]=a;
-		vram[u+1]=a;
-		vram[u+2]=a;
-		vram[320+u]=a;
-		vram[320+u+1]=a;
-		vram[320+u+2]=a;
-		vram[640+u]=a;
-		vram[640+u+1]=a;
-		vram[640+u+2]=a;
-	}
-}
-
 int	doblock(FILE *f1,unsigned type)
 {
-	if((type==0x000b || type==0x0004) && useownpal)
-	{
-		int	a;
-		outportb(0x3c8,0);
-		for(a=0;a<768;a++) outportb(0x3c9,ownpal[a]);
-		if(oktoviewpal) viewpal();
-		return(0);
-	}
 	if(type==0x000b)
 	{
 		int	a,c,d;
@@ -154,9 +99,7 @@ int	doblock(FILE *f1,unsigned type)
 		c*=3;
 		a=getc(f1)*256; /* first */
 		a+=getc(f1);
-		outportb(0x3c8,a);
-		for(a=0;a<c;a++) outportb(0x3c9,palette[a]=getc(f1));
-		if(oktoviewpal) viewpal();
+		for(a=0;a<c;a++) palette[a]=getc(f1);
 	}
 	else if(type==0x0004)
 	{
@@ -166,9 +109,7 @@ int	doblock(FILE *f1,unsigned type)
 		c*=3;
 		a=getc(f1)*256; /* first */
 		a+=getc(f1);
-		outportb(0x3c8,a);
-		for(a=0;a<c;a++) outportb(0x3c9,palette[a]=(getc(f1)>>2));
-		if(oktoviewpal) viewpal();
+		for(a=0;a<c;a++) palette[a]=(getc(f1)>>2);
 	}
 	else if(type==0x000c)
 	{
@@ -188,12 +129,12 @@ int	doblock(FILE *f1,unsigned type)
 				a=getc(f1);
 				if(a<0x80)
 				{
-					for(c=0;c<a;c++) vram[u++]=lookup[getc(f1)];
+					for(c=0;c<a;c++) vram[u++]=getc(f1);
 				}
 				else
 				{
 					a=256-a;
-					b=lookup[getc(f1)];
+					b=getc(f1);
 					for(c=0;c<a;c++) vram[u++]=b;
 				}
 			}
@@ -203,7 +144,6 @@ int	doblock(FILE *f1,unsigned type)
 	else if(type==0x0007)
 	{
 		int	a,b,b1,b2,c,lc,cc,cm,lb,le,lad;
-		int	skipcnt;
 		long	l;
 		unsigned int u;
 		le=getw(f1);
@@ -225,15 +165,15 @@ int	doblock(FILE *f1,unsigned type)
 				{
 					for(c=0;c<a;c++) 
 					{
-						vram[u++]=lookup[getc(f1)];
-						vram[u++]=lookup[getc(f1)];
+						vram[u++]=getc(f1);
+						vram[u++]=getc(f1);
 					}
 				}
 				else
 				{
 					a=256-a;
-					b1=lookup[getc(f1)];
-					b2=lookup[getc(f1)];
+					b1=getc(f1);
+					b2=getc(f1);
 					for(c=0;c<a;c++)
 					{
 						vram[u++]=b1;
@@ -258,13 +198,13 @@ int	doblock(FILE *f1,unsigned type)
 				a=getc(f1);
 				if(a<0x80)
 				{
-					b=lookup[getc(f1)];
+					b=getc(f1);
 					for(c=0;c<a;c++) vram[u++]=b;
 				}
 				else
 				{
 					a=256-a;
-					for(c=0;c<a;c++) vram[u++]=lookup[getc(f1)];
+					for(c=0;c<a;c++) vram[u++]=getc(f1);
 				}
 			}
 		}
@@ -273,6 +213,5 @@ int	doblock(FILE *f1,unsigned type)
 	else
 	{
 		printf("UNKNOWN BLOCK TYPE: %04X\n",type);
-		getch();
 	}
 }
