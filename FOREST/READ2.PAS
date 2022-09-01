@@ -117,8 +117,8 @@ begin
      close(f);
 
      for x := 0 to sizeof(fbuf) do if fbuf[x] > 0 then inc(fbuf[x],128);
-     move(mem[seg(hback):ofs(hback)+10],pal,768);
-     move(mem[seg(hback):ofs(hback)+778], mem[seg(hback):ofs(hback)], 64000);
+     move(mem[seg(hback):ofs(hback)+16],pal,768);
+     move(mem[seg(hback):ofs(hback)+784], mem[seg(hback):ofs(hback)], 64000);
      for x := 0 to 255 do setrgb(x,0,0,0);
      move(mem[seg(hback):ofs(hback)],mem[$a000:0],64000);
 
