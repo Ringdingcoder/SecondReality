@@ -4,8 +4,7 @@
 #include <dos.h>
 #include "tweak.h"
 
-//#define DO_TABLES
-//#define DPII (3.1415926535*2.0)
+#define DPII (3.1415926535*2.0)
 
 #define LINELEN 41
 #define MAXY 280
@@ -38,8 +37,7 @@ extern int far lsini16[8192];
 //char	lsini[16384]=
 //#include "lsini.pre"
 
-char	ptau[256]=
-#include "ptau.pre"
+char	ptau[256];
 
 int	pals[6][768];
 int	curpal=0;
@@ -65,6 +63,7 @@ plz(){
 	long	tim=0,count=0;
 	int	ch=0,sync=2;
 
+        init_tables();
 	while(dis_musplus()<0 && !dis_exit());
 	dis_setmframe(0);
 
@@ -121,19 +120,9 @@ plz(){
 	cop_plz=0;
 	}
 
-init_plz()
-	{
-	int	a,b,c,z;
-	int	*pptr=pals;
-
-#ifdef	DO_TABLES
-	{
-	FILE	*f1,*f2,*f3,*f4;
-	f1=fopen("lsini4.inc","wb");
-	f2=fopen("lsini16.inc","wb");
-	f3=fopen("psini.inc","wb");
-	f4=fopen("ptau.inc","wb");
-
+init_tables()
+{
+    int a;
 	for(a=0;a<1024*16;a++)
 		{
 		if(a<1024*8)
@@ -142,36 +131,19 @@ init_plz()
 			lsini16[a]=(sin(a*DPII/4096)*55+sin(a*DPII/4096*4)*5+sin(a*DPII/4096*17)*3+64)*16;
 			}
 		psini[a]=sin(a*DPII/4096)*55+sin(a*DPII/4096*6)*5+sin(a*DPII/4096*21)*4+64;
-		if((a&15)==0)
-			{
-			if(a<1024*8)
-				{
-				fprintf(f1,"\ndw	%4d",lsini4[a]);
-				fprintf(f2,"\ndw	%4d",lsini16[a]);
-				}
-			fprintf(f3,"\ndb	%4d",psini[a]);
-			}
-		else	{
-			if(a<1024*8)
-				{
-				fprintf(f1,",%4d",lsini4[a]);
-				fprintf(f2,",%4d",lsini16[a]);
-				}
-			fprintf(f3,",%4d",psini[a]);
-			}
 		}
-
-	fprintf(f4,"{\n%d",ptau[0]=0);
+	ptau[0]=0;
 	for(a=1;a<=128;a++)
 		{
-		fprintf(f4,",%3d",ptau[a]=cos(a*DPII/128+3.1415926535)*31+32);
-		if(!(a&15)) fputc('\n',f4);
+		ptau[a]=cos(a*DPII/128+3.1415926535)*31+32;
 		}
-	fputc('}',f4); fputc(';',f4);
+}
 
-	fclose(f1); fclose(f2); fclose(f3); fclose(f4);
-	}
-#endif
+init_plz()
+	{
+	int	a,b,c,z;
+	int	*pptr=pals;
+
 	tw_opengraph2();
 	cop_start=96*(682-400);
 	set_plzstart(60);

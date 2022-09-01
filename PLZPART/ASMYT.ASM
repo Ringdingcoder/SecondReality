@@ -12,16 +12,13 @@ ASSUME cs:poro
 PUBLIC C plzline, C setplzparas, C psini, C lsini4, C lsini16
 
 LABEL psini BYTE
-INCLUDE 'psini.inc'
-;       db      16384 dup(?)
+        db      16384 dup(?)
 
 LABEL lsini4 WORD
-INCLUDE 'lsini4.inc'
-;       db      16384 dup(?)
+        db      16384 dup(?)
 
 LABEL lsini16 WORD
-INCLUDE 'lsini16.inc'
-;       db      16384 dup(?)
+        db      16384 dup(?)
 
 PROC    C plzline
 
