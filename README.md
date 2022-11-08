@@ -9,6 +9,12 @@ build time, will be, as opposed to carrying the pre-processed intermediate files
 repository. Also, the pre-processing and code generation tools themselves should be built
 from source.
 
+This builds a combined, packed and obfuscated executable similar to the original. A full run
+of the demo works fine. However, it seems that the released source code is in an earlier
+state than the final release. Non-essential features like specifying on the command line
+where to start running or even prematurely exiting in response to a key press do not work as
+reliably as in the real release.
+
 Used build tools:
 
 * Borland C++ 3.1
@@ -19,11 +25,11 @@ Used build tools:
 
 ### Status
 
-This builds a combined, packed and obfuscated executable similar to the original. A full run
-of the demo works fine. However, it seems that the released source code is in an earlier
-state than the final release. Non-essential features like specifying on the command line
-where to start running or even prematurely exiting in response to a key press do not work as
-reliably as in the real release.
+I believe that there are no unused source files left in the tree. A few binary executables
+are still left over, of which at least some had their source code in the repo previously. In
+addition, there used to be extensive tooling and original data for the visu project (the 3D
+scenes). It might be possible to generate the binary data files from these, and I might try
+to tackle this project in the future.
 
 ### How to build
 
