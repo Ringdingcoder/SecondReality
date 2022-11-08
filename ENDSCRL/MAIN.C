@@ -9,7 +9,7 @@ extern	void waitvr(void);
 extern	void setstart(int);
 extern	void setrgbpalette(int p, int r, int g, int b);
 
-extern char far font[31][1500];
+extern char far font[31][1550];
 char	*fonaorder="ABCDEFGHIJKLMNOPQRSTUVWXabcdefghijklmnopqrstuvwxyz0123456789!?,.:èè()+-*='";
 int	fonap[256];
 int	fonaw[256];
@@ -100,16 +100,16 @@ init()
 
 	a=open("endscrol.txt",O_RDONLY); read(a,text,60000); close(a);
 
-	for(x=0;x<1500 && *fonaorder;)
+	for(x=0;x<1550 && *fonaorder;)
 	{
-		while(x<1500)
+		while(x<1550)
 		{
 			for(y=0;y<FONAY;y++) if(font[y][x]) break;
 			if(y!=FONAY) break;
 			x++;
 		}
 		b=x;
-		while(x<1500)
+		while(x<1550)
 		{
 			for(y=0;y<FONAY;y++) if(font[y][x]) break;
 			if(y==FONAY) break;
@@ -120,6 +120,6 @@ init()
 		fonaw[*fonaorder]=x-b;
 		fonaorder++;
 	}
-	fonap[32]=1500-20;
+	fonap[32]=1550-20;
 	fonaw[32]=16;
 	}
