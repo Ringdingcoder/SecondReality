@@ -180,6 +180,12 @@ stamps\techno.st:
 stamps\tunneli.st:
 	cd tunneli
 	tasm routines
+	bpc ballgen2
+	ballgen2
+	binobj tunnel.dat tunneli tun
+	bpc singen
+	singen
+	binobj sinit.dat sinit sini
 	bpc /m tun10
 	copy tun10.exe ..\main\data\tunneli.exe
 	cd ..
