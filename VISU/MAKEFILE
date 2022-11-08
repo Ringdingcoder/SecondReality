@@ -29,4 +29,19 @@ avid.asm : avidm1.asm avidm2.asm atext.asm avidfill.asm
 
 adraw.asm : adrawclp.asm
 
-adata.asm : adatasin.inc afilldiv.inc
+adata.asm : adatasin.inc avistan.inc afilldiv.inc
+
+adatasin.inc: dosin.exe
+	dosin > $@
+
+dosin.exe: dosin.obj
+
+avistan.inc: dotan.exe
+	dotan > $@
+
+dotan.exe: dotan.obj
+
+afilldiv.inc: dofill.exe
+	dofill
+
+dofill.exe: dofill.obj
