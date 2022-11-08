@@ -13,7 +13,7 @@ c_f	= /AL /c /W1 /Oxaz
 .c.obj : 
 	cl $(c_f) $<
 
-c.exe : $(objs)
+c.exe : $(objs) $(dobjs)
 	link /E $(objs)+$(dobjs),c.exe,nul;
 	copy c.exe ..\main\data\3dsinfld.exe
 
@@ -24,3 +24,21 @@ theloop.asm : theloop.inc
 
 theloop.inc: doloop.exe
 	doloop
+
+w1dta1.bin: w1dta.bin
+	..\util\getslice w1dta.bin 0 32768 $@
+w1dta2.bin: w1dta.bin
+	..\util\getslice w1dta.bin 32768 32768 $@
+_w1dta1.obj: w1dta1.bin
+	..\util\doobj w1dta1.bin _w1dta $@
+_w1dta2.obj: w1dta2.bin
+	..\util\doobj w1dta2.bin _w1dta_ $@
+
+w2dta1.bin: w2dta.bin
+	..\util\getslice w2dta.bin 0 32768 $@
+w2dta2.bin: w2dta.bin
+	..\util\getslice w2dta.bin 32768 32768 $@
+_w2dta1.obj: w2dta1.bin
+	..\util\doobj w2dta1.bin _w2dta $@
+_w2dta2.obj: w2dta2.bin
+	..\util\doobj w2dta2.bin _w2dta_ $@
