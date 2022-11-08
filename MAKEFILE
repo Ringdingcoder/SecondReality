@@ -199,7 +199,7 @@ stamps\visu.st:
 
 stamps\visu_c.st:
 	cd visu\c
-	nmake u2a.exe u2e.exe
+	nmake
 	cd ..\..
 	type nul > $@
 
