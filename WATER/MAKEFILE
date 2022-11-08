@@ -5,7 +5,7 @@ binobjs=bkg.obj wat1.obj wat2.obj wat3.obj wat4.obj
 .asm.obj:
 	tasm $<
 
-demo.exe: demo.pas t1.pas t2.pas t3.pas bkr.pas miek.pas routines.obj $(binobjs)
+demo.exe: demo.pas t1.pas t2.pas t3.pas bkr.pas miek.pas routines.obj miekka.obj $(binobjs)
 	bpc /m demo
 
 bkg.obj: bkg.asm bkg.inc
@@ -18,8 +18,11 @@ wat3.obj: wat3.asm wat3.inc
 
 wat4.obj: wat4.asm wat4.inc
 
-bkg.inc: bkg.clx
-	-..\credits\incbin bkg.clx $@
+bkg.uh: bkg.lbm
+	-..\util\lbm2u bkg.lbm $@
+
+bkg.inc: bkg.uh
+	-..\credits\incbin bkg.uh $@
 
 wat1.inc: wat1.dat
 	-..\credits\incbin wat1.dat $@
@@ -32,3 +35,9 @@ wat3.inc: wat3.dat
 
 wat4.inc: wat4.dat
 	-..\credits\incbin wat4.dat $@
+
+miekka.uh: miekka.lbm
+	-..\util\lbm2u miekka.lbm $@
+
+miekka.obj: miekka.uh
+	binobj miekka.uh miekka.obj _miekka

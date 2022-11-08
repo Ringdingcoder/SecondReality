@@ -105,11 +105,11 @@ begin
      end;
 
      fillchar(fbuf,sizeof(fbuf),#0);
-     move(mem[seg(_miekka):ofs(_miekka)+10],pal,768);
-     move(mem[seg(_miekka):ofs(_miekka)+778],font,400*34);
+     move(mem[seg(_miekka):ofs(_miekka)+16],pal,768);
+     move(mem[seg(_miekka):ofs(_miekka)+784],font,400*34);
 
      for x := 0 to 255 do setrgb(x,0,0,0);
-     move(mem[seg(tausta):ofs(tausta)+778],mem[seg(tausta):ofs(tausta)],64000);
+     move(mem[seg(tausta):ofs(tausta)+784],mem[seg(tausta):ofs(tausta)],64000);
      move(mem[seg(tausta):ofs(tausta)],mem[$a000:0],64000);
 
      move(pal,tmppal,768);
