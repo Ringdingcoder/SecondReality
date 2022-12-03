@@ -71,6 +71,8 @@ do_scroll()
 			tstart+=fonaw[*tptr++]+2;
 			}
 		textline[a]=*tptr++; tstart=(639-tstart)/2;
+		if (textline[0] == '[')
+			chars = 0;
 		}
 	memset(scanbuf,0,80*4);
 
@@ -91,8 +93,15 @@ do_scroll()
 	outport(0x3c4,0x0402); memcpy(MK_FP(0x0a000,80*yscrl),scanbuf[2],80); memcpy(MK_FP(0x0a000,80*(yscrl+401)),scanbuf[2],80);
 	outport(0x3c4,0x0802); memcpy(MK_FP(0x0a000,80*yscrl),scanbuf[3],80); memcpy(MK_FP(0x0a000,80*(yscrl+401)),scanbuf[3],80);
 	yscrl=(yscrl+1)%401;
-	line=(line+1)%FONAY;
+	if (textline[0] == '[') {
+		int linediv = (textline[1] - '0') * 10 + textline[2] - '0';
+		line=(line+1)%linediv;
+	} else {
+		line=(line+1)%FONAY;
+	}
 	setstart(yscrl*80+80*1);
+	if (textline[0] == '%')
+		_exit(0);
 	}
 init()
 	{
