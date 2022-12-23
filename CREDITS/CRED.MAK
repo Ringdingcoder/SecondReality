@@ -60,7 +60,7 @@ includ2.obj: cred.cfg includ2.asm
 fona.inc: fona.uh
 # This strips away the palette part
 	..\util2\strip1b fona.uh fona.utm
-	-incbin fona.utm fona.tmp
+	..\util\incbin fona.utm fona.tmp
 	..\util2\tail < fona.tmp > $@
 
 fona.uh: fona.lbm

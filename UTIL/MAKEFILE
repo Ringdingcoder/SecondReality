@@ -1,4 +1,4 @@
-all : doobj.exe lbm2p.exe lbm2u.exe
+all : doobj.exe getslice.exe incbin.exe lbm2p.exe lbm2u.exe
 
 # objects
 
@@ -19,6 +19,12 @@ c_f	= /AL /c /W3 /Oxaz
 
 doobj.exe : doobj.obj
 	link /E doobj.obj,$@,nul;
+
+getslice.exe : getslice.obj
+	link /E getslice.obj,$@,nul;
+
+incbin.exe : incbin.obj
+	link /E incbin.obj,$@,nul;
 
 lbm2p.exe : lbm2p.obj
 	link /E lbm2p.obj,$@,nul;

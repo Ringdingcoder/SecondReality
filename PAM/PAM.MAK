@@ -68,7 +68,7 @@ out.in0: out.ani
 	..\util2\cut64kb out.ani out.in
 
 pal.inc: out.u
-	-..\credits\incbin pal.pal $@
+	..\util\incbin pal.pal $@
 
 #		*Compiler Configuration File*
 pam.cfg: pam.mak

@@ -62,7 +62,7 @@ copper.obj: alku.cfg copper.asm
 	$(TASM) /M9 /MX /ZI /O COPPER.ASM,COPPER.OBJ
 
 fona.inc: fona.uh
-	-incbin fona.uh fona.tmp
+	..\util\incbin fona.uh fona.tmp
 	..\util2\tail < fona.tmp > $@
 
 hoi.in0 hoi.in1: hoi.u

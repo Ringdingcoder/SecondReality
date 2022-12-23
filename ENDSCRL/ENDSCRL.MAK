@@ -50,7 +50,7 @@ asmyt.obj: endscrl.cfg asmyt.asm fona.inc
 fona.inc: fona.uh
 # This strips away the palette part
 	..\util2\strip1b fona.uh fona.utm
-	-..\credits\incbin fona.utm fona.tmp
+	..\util\incbin fona.utm fona.tmp
 	..\util2\tail < fona.tmp > $@
 
 fona.uh: fona.lbm

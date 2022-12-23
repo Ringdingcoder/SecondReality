@@ -22,19 +22,19 @@ bkg.uh: bkg.lbm
 	-..\util\lbm2u bkg.lbm $@
 
 bkg.inc: bkg.uh
-	-..\credits\incbin bkg.uh $@
+	..\util\incbin bkg.uh $@
 
 wat1.inc: wat1.dat
-	-..\credits\incbin wat1.dat $@
+	..\util\incbin wat1.dat $@
 
 wat2.inc: wat2.dat
-	-..\credits\incbin wat2.dat $@
+	..\util\incbin wat2.dat $@
 
 wat3.inc: wat3.dat
-	-..\credits\incbin wat3.dat $@
+	..\util\incbin wat3.dat $@
 
 wat4.inc: wat4.dat
-	-..\credits\incbin wat4.dat $@
+	..\util\incbin wat4.dat $@
 
 miekka.uh: miekka.lbm
 	-..\util\lbm2u miekka.lbm $@
