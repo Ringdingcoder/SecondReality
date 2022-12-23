@@ -1,4 +1,4 @@
-all : doobj.exe
+all : doobj.exe lbm2p.exe lbm2u.exe
 
 # objects
 
@@ -19,3 +19,9 @@ c_f	= /AL /c /W3 /Oxaz
 
 doobj.exe : doobj.obj
 	link /E doobj.obj,$@,nul;
+
+lbm2p.exe : lbm2p.obj
+	link /E lbm2p.obj,$@,nul;
+
+lbm2u.exe : lbm2u.obj
+	link /E lbm2u.obj,$@,nul;
