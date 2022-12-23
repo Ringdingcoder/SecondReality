@@ -1,0 +1,21 @@
+all : doobj.exe
+
+# objects
+
+#objs=jp.obj asm.obj
+
+# option flags
+
+asm_f	= /ML /m9 /s /JJUMPS
+c_f	= /AL /c /W3 /Oxaz
+
+# general compile orders
+
+.asm.obj :
+	tasm $(asm_f) $<
+
+.c.obj :
+	cl $(c_f) $<
+
+doobj.exe : doobj.obj
+	link /E doobj.obj,$@,nul;

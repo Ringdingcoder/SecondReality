@@ -1,4 +1,5 @@
 stamps=\
+	stamps\util.st \
 	stamps\util2.st \
 	stamps\disc.st \
 	stamps\forest.st \
@@ -26,6 +27,12 @@ stamps=\
 	stamps\final.st
 
 all : $(stamps) 
+
+stamps\util.st:
+	cd util
+	nmake
+	cd ..
+	type nul > $@
 
 stamps\util2.st:
 	cd util2
