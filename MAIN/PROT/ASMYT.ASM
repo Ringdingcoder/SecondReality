@@ -34,36 +34,4 @@ PROC C arand
 	ret
 ENDP
 
-PUBLIC C arsetkey
-
-PROC C arsetkey
-	ARG    	ckey:dword
-
-	push	ds si di
-
-	mov	ax, cs
-	mov	ds, ax
-	mov	es, ax
-	mov	si, OFFSET randtau
-	mov	di, si
-	cld
-	lfs	bx, [ckey]
-	mov	cx, 100h
-	mov	dl, [fs:bx]
-@@l1:
-	lodsb
-	xor	al, dl
-	stosb
-	inc	bx
-	cmp	[BYTE PTR fs:bx], 0d
-	jnz	@@l2
-	lfs	bx, [ckey]
-@@l2:
-	rol	dl, 1d
-	add	dl, [fs:bx]
-	loop	@@l1
-
-	pop	di si ds
-	ret
-ENDP
 END
