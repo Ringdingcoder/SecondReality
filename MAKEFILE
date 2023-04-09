@@ -15,7 +15,6 @@ stamps=\
 	stamps\lens.st \
 	stamps\jplogo.st \
 	stamps\glenz.st \
-	stamps\fcp.st \
 	stamps\endscrl.st \
 	stamps\end.st \
 	stamps\dots.st \
@@ -101,12 +100,6 @@ stamps\end.st:
 stamps\endscrl.st:
 	cd endscrl
 	make -fendscrl
-	cd ..
-	type nul > $@
-
-stamps\fcp.st:
-	cd fcp
-	make -ffcp fcprot.exe
 	cd ..
 	type nul > $@
 
