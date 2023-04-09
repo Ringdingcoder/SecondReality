@@ -5,4 +5,3 @@ extern	int	 	freemem(char far *block); /* frees a memory block */
 extern	int		exists(char *fname,long *size);
 extern	char far *	readfile(char *fname); /* reserves memory for file and loads it and returns a pointer to it */
 extern	int		readfileto2(char *buf,char *fname,long pos,long count); /* reads a file to a pre-reserved buffer */
-extern	int		psopen(char *fname,long *size);

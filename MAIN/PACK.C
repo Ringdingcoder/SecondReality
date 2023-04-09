@@ -22,24 +22,6 @@ unsigned char nbuf[16];
 
 int	mode;
 
-void	crypt(char *buf,int count,long pos,int adr)
-{
-	unsigned int c;
-	c=(int)pos*adr;
-	while(count--)
-	{
-		if(c<0xf000) 
-		{
-			*buf^=0xff;
-		}
-		else
-		{
-		}
-		c+=adr;
-		buf++;
-	}
-}
-
 void	dofile2(void)
 {
 	int	done,exe;
@@ -205,7 +187,6 @@ int dofile1(void)
 					buf[1]=0xfa;
 					exe=0;
 				}
-				crypt(buf,a,ftell(f1),dir[i].adr);
 				printf(")\n");
 				fwrite(buf,1,a,f1);
 				count-=a;

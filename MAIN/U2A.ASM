@@ -802,23 +802,6 @@ ENDIF
 	mov	cs:read_cnt,cx
 	pushf
 	call	cs:file_oldint
-	pusha
-	push	ds
-	mov	ax,cs:read_poslow
-	mov	bx,cs:read_adr
-	mul	bx
-	lds	si,dword ptr cs:read_buf
-	mov	cx,cs:read_cnt
-	mov	dl,0ffh
-@@rr1:	cmp	ax,0f000h
-	jae	@@rr2
-	xor	ds:[si],dl
-@@rr2:	inc	si
-	add	ax,bx
-	dec	cx
-	jnz	@@rr1
-	pop	ds
-	popa
 	clc ;no errors, sure :-)
 	ret 	2
 
