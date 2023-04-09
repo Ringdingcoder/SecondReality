@@ -113,9 +113,6 @@ stamps\fcp.st:
 stamps\final.st:
 	cd main
 	nmake pack.exe
-	cd data
-	pklite -a *
-	cd ..
 	pack music
 	pack
 	cd ..
