@@ -86,7 +86,7 @@ main()
 	for(a=1,p=1,f=0,frame_count=0;cop_dofade!=0 && !dis_exit();)
 		do_scroll(2);
 
-	for(f=60;a<320 && !dis_exit();)
+	for(f=60;a<321 && !dis_exit();)
 		{
 		if(f==0) {
 			cop_fadepal=textin;
@@ -144,9 +144,9 @@ main()
 			f=0;
 			}
 		else	f++;
-		do_scroll(tptr < 5 ? 1 : 0);
+		do_scroll(tptr < 5);
 		}
-	if(f>63/SCRLF){
+	if(a==321){
 		dofade(palette2,palette);
 		}
 	fonapois();
@@ -400,7 +400,6 @@ dofade(char far *pal1, char far *pal2)
 		while(frame_count<1); frame_count=0;
 		}
 	}
-char	fuckpal[768];
 
 addtext(int tx,int ty,char *txt)
 	{
