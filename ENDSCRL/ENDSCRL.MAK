@@ -5,8 +5,8 @@ CC = bcc +ENDSCRL.CFG
 TASM = TASM
 TLIB = tlib
 TLINK = tlink
-LIBPATH = E:\u2\CPP\LIB
-INCLUDEPATH = E:\u2\CPP\INCLUDE
+LIBPATH = ..\..\CPP\LIB
+INCLUDEPATH = ..\..\CPP\INCLUDE
 
 
 #		*Implicit Rules*
