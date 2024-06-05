@@ -27,7 +27,7 @@ EXE_dependencies =  \
 
 #		*Explicit Rules*
 sd.exe: sd.cfg $(EXE_dependencies)
-  $(TLINK) /v/x/n/c/L$(LIBPATH) @&&|
+  $(TLINK) /x/n/c/L$(LIBPATH) @&&|
 c0l.obj+
 shutdown.obj+
 tweak.obj+
@@ -56,7 +56,6 @@ sd.cfg: sd.mak
   copy &&|
 -ml
 -2
--v
 -G
 -O
 -Z

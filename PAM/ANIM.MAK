@@ -25,7 +25,7 @@ EXE_dependencies =  \
 
 #		*Explicit Rules*
 anim.exe: anim.cfg $(EXE_dependencies)
-  $(TLINK) /v/x/c/P-/L$(LIBPATH) @&&|
+  $(TLINK) /x/c/P-/L$(LIBPATH) @&&|
 c0l.obj+
 anim.obj+
 tweak.obj
@@ -51,7 +51,6 @@ anim.cfg: anim.mak
 -3
 -f287
 -K
--v
 -G
 -O
 -Og

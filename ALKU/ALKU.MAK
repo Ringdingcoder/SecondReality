@@ -29,7 +29,7 @@ EXE_dependencies =  \
 
 #		*Explicit Rules*
 alku.exe: alku.cfg $(EXE_dependencies)
-  $(TLINK) /v/x/c/P-/L$(LIBPATH) @&&|
+  $(TLINK) /x/c/P-/L$(LIBPATH) @&&|
 c0l.obj+
 main.obj+
 asmyt.obj+
@@ -80,7 +80,6 @@ alku.cfg: alku.mak
 -ml
 -3
 -f287
--v
 -G
 -O
 -Og

@@ -24,7 +24,7 @@ EXE_dependencies =  \
 
 #		*Explicit Rules*
 vfli.exe: vfli.cfg $(EXE_dependencies)
-  $(TLINK) /v/s/i/n/P-/L$(LIBPATH) @&&|
+  $(TLINK) /s/i/n/P-/L$(LIBPATH) @&&|
 c0l.obj+
 vfli.obj
 vfli,vfli
@@ -41,7 +41,6 @@ vfli.cfg: vfli.mak
 -ml
 -2
 -f-
--v
 -G
 -O
 -Z

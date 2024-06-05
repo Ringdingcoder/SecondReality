@@ -26,7 +26,7 @@ EXE_dependencies =  \
 
 #		*Explicit Rules*
 endscrl.exe: endscrl.cfg $(EXE_dependencies)
-  $(TLINK) /v/x/c/P-/L$(LIBPATH) @&&|
+  $(TLINK) /x/c/P-/L$(LIBPATH) @&&|
 c0l.obj+
 main.obj+
 asmyt.obj+
@@ -63,7 +63,6 @@ endscrl.cfg: endscrl.mak
 -3
 -f287
 -K
--v
 -G
 -O
 -Og

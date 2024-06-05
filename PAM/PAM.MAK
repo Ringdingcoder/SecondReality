@@ -29,7 +29,7 @@ EXE_dependencies =  \
 
 #		*Explicit Rules*
 pam.exe: pam.cfg $(EXE_dependencies)
-  $(TLINK) /v/s/i/n/P-/L$(LIBPATH) @&&|
+  $(TLINK) /s/i/n/P-/L$(LIBPATH) @&&|
 c0l.obj+
 outtaa.obj+
 asmyt.obj+
@@ -76,7 +76,6 @@ pam.cfg: pam.mak
 -ml
 -2
 -f-
--v
 -G
 -O
 -Z

@@ -34,7 +34,7 @@ EXE_dependencies =  \
 
 #		*Explicit Rules*
 plzpart.exe: plzpart.cfg $(EXE_dependencies)
-  $(TLINK) /v/s/c/P-/L$(LIBPATH) @&&|
+  $(TLINK) /s/c/P-/L$(LIBPATH) @&&|
 c0l.obj+
 asmyt.obj+
 copper.obj+
@@ -87,7 +87,6 @@ plzpart.cfg: plzpart.mak
   copy &&|
 -ml
 -3
--v
 -vi-
 -w-rvl
 -weas
